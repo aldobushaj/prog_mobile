@@ -1,5 +1,6 @@
 package com.example.weatherapiapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -103,10 +104,13 @@ public class MainActivity extends AppCompatActivity {
         btn_getWeatherByName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(
+
+                Intent intent = new Intent(MainActivity.this, StatsCarActivity.class);
+                startActivity(intent);
+                /*Toast.makeText(
                         MainActivity.this,
                         "You typed " + et_dataInput.getText().toString(),
-                        Toast.LENGTH_SHORT).show();
+                        Toast.LENGTH_SHORT).show();*/
             }
         });
     }
