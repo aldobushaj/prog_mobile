@@ -1,4 +1,4 @@
-package com.example.weatherapiapp;
+package com.example.bnext;
 
 import android.content.Context;
 import android.graphics.Bitmap;

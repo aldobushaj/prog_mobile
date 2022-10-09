@@ -1,4 +1,4 @@
-package com.example.weatherapiapp;
+package com.example.bnext;
 
 import static android.util.Log.ERROR;
 
