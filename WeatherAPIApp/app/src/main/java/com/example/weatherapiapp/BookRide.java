@@ -23,7 +23,7 @@ public class BookRide extends AppCompatActivity {
         // ---- assign values to each control of the layout----
         //Buttons
         SearchRideButton = findViewById(R.id.SearchRideButton);
-        BookRideButton = findViewById(R.id.BookRideButton);
+        BookRideButton = findViewById(R.id.bookRideButton);
 
         // Text Views
         UserNameTextView = findViewById(R.id.UserNameTextView);

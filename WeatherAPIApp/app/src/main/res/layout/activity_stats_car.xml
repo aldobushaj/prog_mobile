@@ -7,10 +7,110 @@
     tools:context=".StatsCarActivity">
 
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="132dp"
-        android:layout_height="51dp"
+        android:id="@+id/priceHour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Price Hour: "
+        android:textStyle="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.045"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/priceKM"
+        app:layout_constraintVertical_bias="0.047" />
+
+    <TextView
+        android:id="@+id/carPlateNumber"
+        android:layout_width="233dp"
+        android:layout_height="46dp"
+        android:background="#FFFFFF"
         android:text="TextView"
-        tools:layout_editor_absoluteX="77dp"
-        tools:layout_editor_absoluteY="79dp" />
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.185"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/carName"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/carName"
+        android:layout_width="233dp"
+        android:layout_height="46dp"
+        android:background="#FFFFFF"
+        android:text="TextView"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.185"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023" />
+
+    <ImageView
+        android:id="@+id/carImage"
+        android:layout_width="187dp"
+        android:layout_height="136dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/carPlateNumber"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/tesla_model_y" />
+
+    <TextView
+        android:id="@+id/priceKM"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Price KM: "
+        android:textStyle="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.045"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="409dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="6dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/carImage"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ListView
+        android:id="@+id/commentSection"
+        android:layout_width="328dp"
+        android:layout_height="269dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider"
+        app:layout_constraintVertical_bias="0.573"
+        tools:ignore="SpeakableTextPresentCheck">
+    </ListView>
+
+    <Button
+        android:id="@+id/bookRideButton"
+        android:layout_width="225dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="10dp"
+        android:backgroundTint="#FF5722"
+        android:text="@string/book_now_button_en"
+        app:cornerRadius="18dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:strokeColor="#673AB7" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
