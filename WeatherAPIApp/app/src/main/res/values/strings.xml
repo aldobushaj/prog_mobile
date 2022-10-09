@@ -1,3 +1,10 @@
 <resources>
-    <string name="app_name">WeatherAPIApp</string>
+    <string name="app_name">B-Next v0.1</string>
+    <string name="search_button_en">Search</string>
+    <string name="book_now_button_en">Book Now!</string>
+    <string name="price_km_text_it">Quanto vuoi spendere al km?</string>
+    <string name="destination_text_it">Destinazione</string>
+    <string name="date_picker_text_it">Quando vuoi partire?</string>
+    <string name="time_picker_text_it">A che ora?</string>
+
 </resources>

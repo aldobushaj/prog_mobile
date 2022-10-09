@@ -5,6 +5,7 @@
       <map>
         <entry key="..\:/Users/aldob/Documents/GitHub/prog_mob/WeatherAPIApp/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/silve/AndroidStudioProjects/WeatherAPIApp/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Users/silve/Documents/Git/prog_mobile/WeatherAPIApp/app/src/main/res/layout/activity_book_ride.xml" value="0.264" />
       </map>
     </option>
   </component>
@@ -13,5 +14,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.2" />
+      </ProjectState>
+    </option>
   </component>
 </project>
