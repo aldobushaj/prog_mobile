@@ -3,10 +3,16 @@ package com.example.bnext;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class BookRide extends AppCompatActivity {
     String token = "";
@@ -37,5 +43,38 @@ public class BookRide extends AppCompatActivity {
 
         // List View
         AvailableCarsListView = findViewById(R.id.AvaiableCarsListView);
+
+
+
+        //click listener rimpiazzato con una lambda
+        SearchRideButton.setOnClickListener(view -> {
+
+            //Creo il dataService e passo questa activity come context
+            DataService  dataService = new DataService(BookRide.this);
+            /*
+            dataService.signIn(new DataService.VolleyResponseListener() {
+                @Override
+                public void onError(String message) {
+                    Toast.makeText(BookRide.this,"Something wrong BookRide Search  " , Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void onResponse(JSONObject response) {
+                    // memorizzo il token una volta fatta l'autenticazione, per usarlo nello prossime richieste
+                    try {
+                        token= (String) response.get("token");
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    Toast.makeText(MainActivity.this,"Value of data : " + response, Toast.LENGTH_SHORT).show();
+                }
+            });
+            Log.println(Log.INFO, "signIn result", "bitcoin");
+            //Toast.makeText(MainActivity.this,"Value of data : " + bitcoin, Toast.LENGTH_SHORT).show();
+        */
+        });
+
+
+
     }
 }
