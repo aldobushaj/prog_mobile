@@ -1,4 +1,4 @@
-package com.example.weatherapiapp;
+package com.example.bnext;
 
 import static org.junit.Assert.assertEquals;
 

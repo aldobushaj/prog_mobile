@@ -3,6 +3,6 @@
     <!-- Riga successiva per non bloccare richieste Http-->
     <base-config cleartextTrafficPermitted="true" />
     <domain-config cleartextTrafficPermitted="true">
-        <domain includeSubdomains="true">com.example.weatherapiapp</domain>
+        <domain includeSubdomains="true">bnext</domain>
     </domain-config>
 </network-security-config>

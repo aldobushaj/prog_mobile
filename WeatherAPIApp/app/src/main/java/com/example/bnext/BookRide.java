@@ -1,4 +1,4 @@
-package com.example.weatherapiapp;
+package com.example.bnext;
 
 import androidx.appcompat.app.AppCompatActivity;
 
