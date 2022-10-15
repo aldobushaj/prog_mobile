@@ -7,4 +7,11 @@
     <string name="date_picker_text_it">Quando vuoi partire?</string>
     <string name="time_picker_text_it">A che ora?</string>
 
+
+    <string name="start_booking_en">Start Booking</string>
+    <string name="price_hour_en">Price / Hour</string>
+    <string name="il_veicolo_arriver_alle_it">Il veicolo arriverà alle</string>
+    <string name="leave_a_feedback_en">Leave a Feedback!</string>
+    <string name="end_trip_and_pay_en">End trip and Pay</string>
+
 </resources>

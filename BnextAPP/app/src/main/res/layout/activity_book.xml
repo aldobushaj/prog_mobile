@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BookActivity">
+
+    <Button
+        android:id="@+id/feedbackButton"
+        android:layout_width="194dp"
+        android:layout_height="49dp"
+        android:layout_marginBottom="48dp"
+        android:backgroundTint="#1DA81D"
+        android:text="@string/start_booking_en"
+        app:cornerRadius="18dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/priceText"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="@+id/priceText"
+
+        />
+
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="409dp"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/totalText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="@string/il_veicolo_arriver_alle_it"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider2" />
+
+    <TextView
+        android:id="@+id/oreText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="@+id/totalText"
+        app:layout_constraintStart_toStartOf="@+id/totalText"
+        app:layout_constraintTop_toBottomOf="@+id/totalText" />
+
+    <TextView
+        android:id="@+id/priceText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/price_hour_en"
+        app:layout_constraintBottom_toTopOf="@+id/feedbackButton"
+        app:layout_constraintEnd_toEndOf="@+id/oreText"
+        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintStart_toStartOf="@+id/oreText"
+        app:layout_constraintTop_toBottomOf="@+id/oreText" />
+</androidx.constraintlayout.widget.ConstraintLayout>
