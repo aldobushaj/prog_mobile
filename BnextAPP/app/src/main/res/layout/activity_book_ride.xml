@@ -54,13 +54,16 @@
         android:id="@+id/userAvatar"
         android:layout_width="99dp"
         android:layout_height="101dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:src="@drawable/avatar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.876"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.051"
-        android:src="@drawable/avatar" />
+         />
 
     <TextView
         android:id="@+id/SpesaTextView"

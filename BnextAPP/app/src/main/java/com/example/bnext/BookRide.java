@@ -2,11 +2,14 @@ package com.example.bnext;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,6 +23,7 @@ public class BookRide extends AppCompatActivity {
     TextView UserNameTextView;
     EditText PriceKmEditText, DestinationEditText, DateChooseEditText, TimeChooseEditText;
     ListView AvailableCarsListView;
+    ImageView userAvatar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +47,10 @@ public class BookRide extends AppCompatActivity {
 
         // List View
         AvailableCarsListView = findViewById(R.id.AvaiableCarsListView);
+
+
+        // Image Buttons
+        userAvatar = findViewById(R.id.userAvatar);
 
 
 
@@ -73,6 +81,26 @@ public class BookRide extends AppCompatActivity {
             //Toast.makeText(MainActivity.this,"Value of data : " + bitcoin, Toast.LENGTH_SHORT).show();
         */
         });
+
+
+        userAvatar.setOnClickListener(view -> {
+            Intent intent = new Intent(view.getContext(), UserDetailsActivity.class);
+            view.getContext().startActivity(intent);
+
+        });
+
+        BookRideButton.setOnClickListener(view -> {
+            /* Per ora va direttamente,
+            dopo va fatto che si procede a quella dopo
+            selezionando una macchina e passando all'activity
+            seguente le informazioni
+            * */
+            Intent intent = new Intent(view.getContext(), BookActivity.class);
+            view.getContext().startActivity(intent);
+
+        });
+
+
 
 
 

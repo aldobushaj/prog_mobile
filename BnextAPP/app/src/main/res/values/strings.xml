@@ -14,4 +14,13 @@
     <string name="leave_a_feedback_en">Leave a Feedback!</string>
     <string name="end_trip_and_pay_en">End trip and Pay</string>
 
+    <string name="username_text">Username</string>
+    <string name="user_details">User details</string>
+
+    <string name="email_text">Email</string>
+    <string name="home">Home</string>
+    <string name="username">Mario Rossi</string>
+    <string name="email">mario.rossi@mail.com</string>
+
+
 </resources>
