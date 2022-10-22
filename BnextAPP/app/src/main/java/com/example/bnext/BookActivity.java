@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.androidnetworking.AndroidNetworking;
+
 public class BookActivity extends AppCompatActivity {
 
     TextView infoText, oreText, priceText;
@@ -24,6 +26,7 @@ public class BookActivity extends AppCompatActivity {
         startBookButton = findViewById(R.id.feedbackButton);
 
         priceText.setText("Price / Hour: 12........");
+        AndroidNetworking.initialize(getApplicationContext());
 
     }
 }

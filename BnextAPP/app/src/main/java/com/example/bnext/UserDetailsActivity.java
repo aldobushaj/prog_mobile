@@ -10,6 +10,10 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.android.gms.net.CronetProviderInstaller;
+
+import org.chromium.net.CronetEngine;
+
 public class UserDetailsActivity extends AppCompatActivity {
     String token = "";
     Button HomeUserDetailsButton, BookRideButton;
@@ -28,6 +32,7 @@ public class UserDetailsActivity extends AppCompatActivity {
         // Edit Text
         UsernameEditText = findViewById(R.id.usernameEditText);
         EmailEditText = findViewById(R.id.emailEditText);
+
 
         HomeUserDetailsButton.setOnClickListener(new View.OnClickListener() {
             @Override
