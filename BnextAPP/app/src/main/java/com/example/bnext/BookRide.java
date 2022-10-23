@@ -30,6 +30,13 @@ public class BookRide extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_ride);
 
+        // Recupero il token ottenuto dalla pagina di login
+        Bundle bundle = getIntent().getExtras();
+        token = bundle.getString("token");
+        //System.out.println("Ecco il token\n******** "+token);
+
+
+
         // ---- assign values to each control of the layout----
         //Buttons
         SearchRideButton = findViewById(R.id.SearchRideButton);

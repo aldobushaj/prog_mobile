@@ -70,8 +70,17 @@ public class MainActivity extends AppCompatActivity {
                             //Toast.makeText(MainActivity.this, "Value of data : " + response, Toast.LENGTH_SHORT).show();
 
                             Log.println(Log.INFO, "signIn result", "Success");
+
                             // il login ha avuto successo, vado alla prossima pagina
                             Intent intent = new Intent(MainActivity.this, BookRide.class);
+
+                            // Quindi posso passare  il token di autenticazione all'altra activity
+                            //Create the bundle
+                            Bundle b = new Bundle();
+                            //Add your data to bundle
+                            b.putString("token", token);
+
+                            intent.putExtras(b);
                             startActivity(intent);
                         }
                     });
