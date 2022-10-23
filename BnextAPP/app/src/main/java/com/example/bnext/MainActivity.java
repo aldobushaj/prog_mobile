@@ -71,6 +71,9 @@ public class MainActivity extends AppCompatActivity {
                         }
                     });
                     Log.println(Log.INFO, "signIn result", "Success");
+                    // il login ha avuto successo, vado alla prossima pagina
+                    Intent intent = new Intent(MainActivity.this, BookRide.class);
+                    startActivity(intent);
 
                 }else{
                     Log.println(Log.INFO, "signIn result", "You must enter username and password to login");
