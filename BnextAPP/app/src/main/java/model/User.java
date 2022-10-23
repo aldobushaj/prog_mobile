@@ -1,5 +1,7 @@
 package model;
 
+import androidx.annotation.NonNull;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -12,7 +14,7 @@ public class User {
     private Date birthDate;
     private String username;
     private String password;
-    private int active = 1;
+    private int active;
     // Per inserire più ruoli, inserirli tutti nella stessa stringa divisi con ","
     private String permissions;
     private String roles;
@@ -144,6 +146,25 @@ public class User {
 
     public void setFeedbacks(List<Feedback> feedbacks) {
         this.feedbacks = feedbacks;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", birthDate=" + birthDate +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", active=" + active +
+                ", permissions='" + permissions + '\'' +
+                ", roles='" + roles + '\'' +
+                ", ownedCars=" + ownedCars +
+                ", reservations=" + reservations +
+                ", feedbacks=" + feedbacks +
+                '}';
     }
 }
 

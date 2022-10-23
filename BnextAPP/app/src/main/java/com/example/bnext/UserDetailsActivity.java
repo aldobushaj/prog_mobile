@@ -1,7 +1,5 @@
 package com.example.bnext;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,32 +10,26 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONArrayRequestListener;
-import com.google.android.gms.net.CronetProviderInstaller;
+import com.google.gson.Gson;
 
-import org.chromium.net.CronetEngine;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
-
-import okhttp3.Call;
-import okhttp3.MediaType;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
+import model.User;
 
 public class UserDetailsActivity extends AppCompatActivity {
     String token = "";
     Button HomeUserDetailsButton, BookRideButton;
     TextView UserNameTextView;
-    EditText UsernameEditText,EmailEditText;
+    EditText UsernameEditText, EmailEditText;
     ListView AvailableCarsListView;
+    User currentUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,15 +42,14 @@ public class UserDetailsActivity extends AppCompatActivity {
         // Edit Text
         UsernameEditText = findViewById(R.id.usernameEditText);
         EmailEditText = findViewById(R.id.emailEditText);
-        UserNameTextView= findViewById(R.id.userNameTextView);
+        UserNameTextView = findViewById(R.id.userNameTextView);
         // Populate the UI with Fast Android Networking Library
         AndroidNetworking.initialize(getApplicationContext());
         //http://10.0.2.2:8080/user/allUsers
         // qua mettiamo l'url della richiesta sempre con http://10.0.2.2:8080/ per il localhost
         AndroidNetworking.get("http://10.0.2.2:8080/user/allUsers")
                 //negli header per il token fare sempre così .addHeaders("Authorization", "Bearer eyJhbGciOiJIUzUxMiJ9")
-                .addHeaders("Authorization", "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwcm92YSIsImlhdCI6MTY2NjUwOTY3MiwiZXhwIjoxNjY2NTI3NjcyfQ.uZylo6iClbKnffjyX9i6G1VPjYuDx7JN90Llh3mRWChaXXmEKTOW94OeHE_-r759P6x8AXH69R40_cKmD7pqYQ")
-                .addPathParameter("Authorization", "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwcm92YSIsImlhdCI6MTY2NjUwOTY3MiwiZXhwIjoxNjY2NTI3NjcyfQ.uZylo6iClbKnffjyX9i6G1VPjYuDx7JN90Llh3mRWChaXXmEKTOW94OeHE_-r759P6x8AXH69R40_cKmD7pqYQ")
+                .addHeaders("Authorization", "Bearer " + token)
                 .setPriority(Priority.LOW)
                 .build()
                 .getAsJSONArray(new JSONArrayRequestListener() {
@@ -66,67 +57,74 @@ public class UserDetailsActivity extends AppCompatActivity {
                     public void onResponse(JSONArray response) {
                         // Qua cosa   fare se la richiesta funziona
                         try {
+                            //Deserializzo il JSON in un oggetto User
+                            Gson gson = new Gson(); // Or use new GsonBuilder().create();
+                            currentUser = gson.fromJson(response.get(0).toString(), User.class); // deserializes json into target2
                             for (int i = 0; i < response.length(); ++i) {
+
 
                                 JSONObject jsn = response.getJSONObject(i);
                                 UserNameTextView.setText(
-                                        jsn.get("name").toString()
-                                        + " "
-                                        + jsn.get("surname").toString()
-                                        + "\n Roles: "
-                                        + jsn.get("roles").toString()
+                                        currentUser.getName()
+                                                + " "
+                                                + currentUser.getSurname()
+                                                + "\n Roles: "
+                                                + currentUser.getRoles()
 
                                 );
                                 UsernameEditText.setText(jsn.get("username").toString());
-                                Log.d("Get response",jsn.get("name").toString());
+                                Log.d("Get response", currentUser.toString());
 
                             }
 
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
-                        Toast.makeText(UserDetailsActivity.this,response.toString() , Toast.LENGTH_LONG).show();
+                        Toast.makeText(UserDetailsActivity.this, response.toString(), Toast.LENGTH_LONG).show();
                     }
+
                     @Override
                     public void onError(ANError error) {
                         // handle error
                         // Qua cosa   fare se la richiesta va in errore
-                        Toast.makeText(UserDetailsActivity.this,error.getErrorCode(), Toast.LENGTH_LONG).show();
-                        System.out.println(error.toString());
+                        Toast.makeText(UserDetailsActivity.this, error.getErrorCode(), Toast.LENGTH_LONG).show();
+                        System.out.println(error);
                     }
                 });
 
-        HomeUserDetailsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        HomeUserDetailsButton.setOnClickListener(view -> {
+            AndroidNetworking.initialize(getApplicationContext());
+            AndroidNetworking.post("http://10.0.2.2:8080/user/update")
+                    //negli header per il token fare sempre così .addHeaders("Authorization", "Bearer eyJhbGciOiJIUzUxMiJ9")
+                    .addHeaders("Authorization", "Bearer " + token)
+                    .addBodyParameter("userId", currentUser.getUserId().toString())
+                    .addBodyParameter("username", UsernameEditText.getText().toString())
+                    .setPriority(Priority.LOW)
+                    .build()
+                    .getAsJSONArray(new JSONArrayRequestListener() {
+                        @Override
+                        public void onResponse(JSONArray response) {
+                            // Qua cosa   fare se la richiesta funziona
 
 
-            /*
-                OkHttpClient client = new OkHttpClient();
-                String url = "http://10.0.2.2:8080/user/allUsers";
+                            Log.d("Updated user", currentUser.toString());
+                            Toast.makeText(UserDetailsActivity.this, response.toString(), Toast.LENGTH_LONG).show();
+                            // Così ritorniamo alla home dopo l'update
+                            Intent intent = new Intent(view.getContext(), BookRide.class);
+                            view.getContext().startActivity(intent);
+                        }
 
-                    Request request = new Request.Builder()
-                            .url(url)
-                            .build();
+                        @Override
+                        public void onError(ANError error) {
+                            // handle error
+                            // Qua cosa   fare se la richiesta va in errore
+                            Toast.makeText(UserDetailsActivity.this, error.getErrorCode(), Toast.LENGTH_LONG).show();
+                            System.out.println(error);
+                        }
 
-                    try (Response response = client.newCall(request).execute()) {
-                        System.out.println( response.body().string());
-                    }
-                    catch (Exception e){
-                        System.out.println(e.getStackTrace());
-
-                    }
-
-         */
-
+                    });
 
 
-
-
-                // Così ritorniamo alla home quando clicco sul bottone HOME
-                //Intent intent = new Intent(view.getContext(), BookRide.class);
-                //view.getContext().startActivity(intent);
-            }
         });
 
     }
