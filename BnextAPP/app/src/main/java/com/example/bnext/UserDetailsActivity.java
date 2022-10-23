@@ -3,7 +3,6 @@ package com.example.bnext;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -15,15 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
-import com.androidnetworking.interfaces.JSONArrayRequestListener;
 import com.androidnetworking.interfaces.StringRequestListener;
-import com.google.gson.Gson;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.Date;
 
 import model.User;
 
@@ -64,13 +55,13 @@ public class UserDetailsActivity extends AppCompatActivity {
 
         UpdateUserDetailsButton.setOnClickListener(view -> {
 
-            User updatedUser = new User(currentUser.getUserId(),UsernameEditText.getText().toString());
+            User updatedUser = new User(currentUser.getUserId(), UsernameEditText.getText().toString());
             AndroidNetworking.initialize(getApplicationContext());
             // pipedream https://eo36hxzz25l7d4r.m.pipedream.net
             AndroidNetworking.put("http://10.0.2.2:8080/user/update")
                     //negli header per il token fare sempre così .addHeaders("Authorization", "Bearer eyJhbGciOiJIUzUxMiJ9")
                     .addHeaders("Authorization", "Bearer " + token)
-                    .addHeaders("accept","*/*")
+                    .addHeaders("accept", "*/*")
                     .addHeaders("accept-encoding", "gzip, deflate, br")
                     //.addHeaders("content-type","application/json")
                     //.setContentType("application/json; charset=utf-8")
@@ -98,33 +89,6 @@ public class UserDetailsActivity extends AppCompatActivity {
                             System.out.println(anError);
                         }
                     });
-
-                    /*.getAsJSONArray(new JSONArrayRequestListener() {
-                        @Override
-                        public void onResponse(JSONArray response) {
-                            // Qua cosa   fare se la richiesta funziona
-
-
-                            Log.d("Updated user", currentUser.toString());
-                            Toast.makeText(UserDetailsActivity.this, response.toString(), Toast.LENGTH_LONG).show();
-                            // Così ritorniamo alla home dopo l'update
-                            Intent intent = new Intent(view.getContext(), BookRide.class);
-
-                            view.getContext().startActivity(intent);
-                        }
-
-                        @Override
-                        public void onError(ANError error) {
-                            // handle error
-                            // Qua cosa   fare se la richiesta va in errore
-                            Toast.makeText(UserDetailsActivity.this, error.getErrorDetail(), Toast.LENGTH_LONG).show();
-                            System.out.println(error);
-                        }
-
-                    }
-
-                    );*/
-
 
         });
 
