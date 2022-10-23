@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
                     dataService.login(inputEmail.getText().toString(),inputPassword.getText().toString(), new DataService.VolleyResponseListener() {
                         @Override
                         public void onError(String message) {
-                            Toast.makeText(MainActivity.this, "Something wrong MainActivity  ", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this, "Something went wrong with Log In", Toast.LENGTH_SHORT).show();
                         }
 
                         @Override
