@@ -2,12 +2,13 @@ package model;
 
 import androidx.annotation.NonNull;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-public class User {
+public class User implements Serializable {
     private UUID userId;
     private String name;
     private String surname;
@@ -50,6 +51,12 @@ public class User {
         this.active = active;
         this.permissions = permissions;
         this.roles = roles;
+    }
+
+    public User(UUID userId, String username) {
+        /*FOr update username*/
+        this.userId = userId;
+        this.username = username;
     }
 
     public UUID getUserId() {

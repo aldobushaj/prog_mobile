@@ -12,9 +12,13 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.gson.Gson;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import model.User;
 
 public class MainActivity extends AppCompatActivity {
     // Token ottenuto dal login
@@ -24,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     EditText inputEmail, inputPassword;
     Button loginButton, facebookButton, signUpButton;
 
-
+    User currentUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,6 +68,8 @@ public class MainActivity extends AppCompatActivity {
                             // memorizzo il token una volta fatta l'autenticazione, per usarlo nello prossime richieste
                             try {
                                 token = (String) response.get("token");
+                                Gson gson = new Gson(); // Or use new GsonBuilder().create();
+                                currentUser = gson.fromJson(response.get("user").toString(), User.class); // deserializes json into target2
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
@@ -76,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
 
                             // Quindi posso passare il token di autenticazione all'altra activity
                             intent.putExtra("token", token);
+                            intent.putExtra("currentUser",currentUser);
 
                             //Create the bundle
                             /*Bundle b = new Bundle();

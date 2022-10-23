@@ -14,8 +14,17 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.androidnetworking.AndroidNetworking;
+import com.androidnetworking.common.Priority;
+import com.androidnetworking.error.ANError;
+import com.androidnetworking.interfaces.JSONArrayRequestListener;
+import com.google.gson.Gson;
+
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import model.User;
 
 public class BookRide extends AppCompatActivity {
     String token = "";
@@ -24,7 +33,7 @@ public class BookRide extends AppCompatActivity {
     EditText PriceKmEditText, DestinationEditText, DateChooseEditText, TimeChooseEditText;
     ListView AvailableCarsListView;
     ImageView userAvatar;
-
+    User currentUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,9 +42,10 @@ public class BookRide extends AppCompatActivity {
         // Recupero il token ottenuto dalla pagina di login
         Bundle bundle = getIntent().getExtras();
         token = bundle.getString("token");
-        System.out.println("Ecco il token\n******** "+token);
-
-
+        Log.d("Token BookRide",token);
+        // Recupero lo user ottenuto dalla pagina di login
+        currentUser = (User) getIntent().getSerializableExtra("currentUser");
+        Log.d("User BookRide", currentUser.toString());
 
         // ---- assign values to each control of the layout----
         //Buttons
@@ -44,6 +54,8 @@ public class BookRide extends AppCompatActivity {
 
         // Text Views
         UserNameTextView = findViewById(R.id.UserNameTextView);
+        UserNameTextView.setText(currentUser.getName() + " " + currentUser.getSurname() +
+                "\n " + currentUser.getUsername());
 
         // Edit Text
 
@@ -58,7 +70,6 @@ public class BookRide extends AppCompatActivity {
 
         // Image Buttons
         userAvatar = findViewById(R.id.userAvatar);
-
 
 
         //click listener rimpiazzato con una lambda
@@ -92,6 +103,8 @@ public class BookRide extends AppCompatActivity {
 
         userAvatar.setOnClickListener(view -> {
             Intent intent = new Intent(view.getContext(), UserDetailsActivity.class);
+            intent.putExtra("token", token);
+            intent.putExtra("currentUser",currentUser);
             view.getContext().startActivity(intent);
 
         });
@@ -103,6 +116,9 @@ public class BookRide extends AppCompatActivity {
             seguente le informazioni
             * */
             Intent intent = new Intent(view.getContext(), BookActivity.class);
+            // Quindi posso passare il token di autenticazione all'altra activity
+            intent.putExtra("token", token);
+            intent.putExtra("currentUser",currentUser);
             view.getContext().startActivity(intent);
 
         });
