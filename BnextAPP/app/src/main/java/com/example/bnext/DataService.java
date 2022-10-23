@@ -4,6 +4,7 @@ import static android.util.Log.ERROR;
 
 import android.content.Context;
 import android.util.Log;
+import android.widget.EditText;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -36,14 +37,15 @@ public class DataService {
         void onResponse(JSONArray response);
     }
 
-    public void signIn(VolleyResponseListener volleyResponseListener){
+    public void login(String username, String password, VolleyResponseListener volleyResponseListener){
+
         // Ha questo URL in quanto il back-end è in locale, al posto di localhost:8080 si mette questo: 10.0.2.2:8080
         String url = "http://10.0.2.2:8080/user/signin";
 
         // params conterrà l'header da passare alla richiesta
         HashMap<String, String> params = new HashMap<>();
-        params.put("username", "prova");
-        params.put("password", "pass");
+        params.put("username", username);
+        params.put("password", password);
         // faccio la conversione in JSON Object dell'hash map per poterlo passare alla richiesta
         JSONObject parameters = new JSONObject(params);
 

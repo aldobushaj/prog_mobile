@@ -23,4 +23,12 @@
     <string name="email">mario.rossi@mail.com</string>
 
 
+
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="action_sign_in">LOGIN</string>
+    <string name="action_sign_up">SIGNUP</string>
+    <string name="add_feedback">Add Feedback</string>
+
 </resources>

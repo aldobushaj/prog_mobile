@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,59 +17,82 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
+    // Token ottenuto dal login
     String token = "";
-    Button btn_cityID, btn_getWeatherByID, btn_getWeatherByName;
-    EditText et_dataInput;
-    ListView lv_weatherReport;
+
+    TextView signInText, infoText, infoText2, infoText3, emailText, passwordText;
+    EditText inputEmail, inputPassword;
+    Button loginButton, facebookButton, signUpButton;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         // assign values to each control of the layout
-        btn_cityID = findViewById(R.id.btn_getCityID);
-        btn_getWeatherByID = findViewById(R.id.btn_getWeatherByCityID);
-        btn_getWeatherByName = findViewById(R.id.btn_getWeatherByCityName);
-        et_dataInput = findViewById(R.id.et_dataInput);
-        lv_weatherReport = findViewById(R.id.lv_weatherReports);
+
+        signInText = findViewById(R.id.signInText);
+        infoText = findViewById(R.id.infoText);
+        infoText2 = findViewById(R.id.infoText2);
+        infoText3 = findViewById(R.id.infoText3);
+        emailText = findViewById(R.id.emailText);
+        passwordText = findViewById(R.id.passwordText);
+        inputEmail = findViewById(R.id.inputEmail);
+        inputPassword = findViewById(R.id.inputPassword);
+        loginButton = findViewById(R.id.loginButton);
+        facebookButton = findViewById(R.id.facebookButton);
+        signUpButton = findViewById(R.id.signUpButton);
+
+
 
         //click listeners
-        btn_cityID.setOnClickListener(new View.OnClickListener() {
+        loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DataService  dataService = new DataService(MainActivity.this);
+                if (inputEmail.length() != 0 && inputPassword.length() != 0) {
+                    DataService dataService = new DataService(MainActivity.this);
 
-                dataService.signIn(new DataService.VolleyResponseListener() {
-                    @Override
-                    public void onError(String message) {
-                        Toast.makeText(MainActivity.this,"Something wrong MainActivity CityID  " , Toast.LENGTH_SHORT).show();
-                    }
 
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        // memorizzo il token una volta fatta l'autenticazione, per usarlo nello prossime richieste
-                        try {
-                            token= (String) response.get("token");
-                        } catch (JSONException e) {
-                            e.printStackTrace();
+                    dataService.login(inputEmail.getText().toString(),inputPassword.getText().toString(), new DataService.VolleyResponseListener() {
+                        @Override
+                        public void onError(String message) {
+                            Toast.makeText(MainActivity.this, "Something wrong MainActivity  ", Toast.LENGTH_SHORT).show();
                         }
-                        Toast.makeText(MainActivity.this,"Value of data : " + response, Toast.LENGTH_SHORT).show();
-                    }
-                });
-                Log.println(Log.INFO, "signIn result", "bitcoin");
-                //Toast.makeText(MainActivity.this,"Value of data : " + bitcoin, Toast.LENGTH_SHORT).show();
 
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            // memorizzo il token una volta fatta l'autenticazione, per usarlo nello prossime richieste
+                            try {
+                                token = (String) response.get("token");
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                            Toast.makeText(MainActivity.this, "Value of data : " + response, Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                    Log.println(Log.INFO, "signIn result", "Success");
+
+                }else{
+                    Log.println(Log.INFO, "signIn result", "You must enter username and password to login");
+                }
+            }
+        });
+
+
+
+        signUpButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(MainActivity.this, SignUp.class);
+                startActivity(intent);
             }
         });
 
 
 
 
-
-
-
-
-        btn_getWeatherByID.setOnClickListener(new View.OnClickListener() {
+        /*btn_getWeatherByID.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 DataService  dataService = new DataService(MainActivity.this);
@@ -93,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Toast.makeText(MainActivity.this, "You clicked me 2", Toast.LENGTH_SHORT).show();
             }*/
-        });
+        /*});
 
 
 
@@ -111,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
                         MainActivity.this,
                         "You typed " + et_dataInput.getText().toString(),
                         Toast.LENGTH_SHORT).show();*/
-            }
-        });
+           /* }
+        });*/
     }
 }
