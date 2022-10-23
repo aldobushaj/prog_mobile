@@ -75,12 +75,8 @@ public class MainActivity extends AppCompatActivity {
                             Intent intent = new Intent(MainActivity.this, BookRide.class);
 
                             // Quindi posso passare  il token di autenticazione all'altra activity
-                            //Create the bundle
-                            Bundle b = new Bundle();
-                            //Add your data to bundle
-                            b.putString("token", token);
+                            intent.putExtra("token", token);
 
-                            intent.putExtras(b);
                             startActivity(intent);
                         }
                     });

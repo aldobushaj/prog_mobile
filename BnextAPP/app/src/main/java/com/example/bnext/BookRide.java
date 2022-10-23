@@ -33,7 +33,7 @@ public class BookRide extends AppCompatActivity {
         // Recupero il token ottenuto dalla pagina di login
         Bundle bundle = getIntent().getExtras();
         token = bundle.getString("token");
-        //System.out.println("Ecco il token\n******** "+token);
+        System.out.println("Ecco il token\n******** "+token);
 
 
 
