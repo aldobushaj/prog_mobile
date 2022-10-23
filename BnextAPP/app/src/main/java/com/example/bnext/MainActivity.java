@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
-                            Toast.makeText(MainActivity.this, "Value of data : " + response, Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(MainActivity.this, "Value of data : " + response, Toast.LENGTH_SHORT).show();
 
                             Log.println(Log.INFO, "signIn result", "Success");
                             // il login ha avuto successo, vado alla prossima pagina
