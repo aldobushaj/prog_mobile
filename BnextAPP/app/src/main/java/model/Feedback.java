@@ -1,7 +1,8 @@
 package model;
+import java.io.Serializable;
 import java.util.UUID;
 
-public class Feedback {
+public class Feedback implements Serializable {
     public UUID idFeedback;
     public String comment;
     private User user;
@@ -21,6 +22,20 @@ public class Feedback {
         this.idFeedback = UUID.randomUUID();
     }
 
+
+
+    public Feedback(UUID idFeedback, String comment, Car car, User user) {
+        this.comment = comment;
+        this.car = car;
+        this.user = user;
+
+        this.idFeedback = idFeedback;
+    }
+
+
+
+
+
     public UUID getIdFeedback() {
         return idFeedback;
     }
@@ -37,6 +52,8 @@ public class Feedback {
         this.comment = comment;
     }
 
+
+
     public User getUser() {
         return user;
     }
@@ -51,5 +68,16 @@ public class Feedback {
 
     public void setCar(Car car) {
         this.car = car;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Feedback{" +
+                "idFeedback=" + idFeedback +
+                ", comment='" + comment + '\'' +
+                ", user=" + user +
+                ", car=" + car +
+                '}';
     }
 }

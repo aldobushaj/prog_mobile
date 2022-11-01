@@ -2,12 +2,18 @@ package model;
 
 import androidx.annotation.NonNull;
 
+import java.io.Serializable;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-public class User {
+public class User implements Serializable {
     private UUID userId;
     private String name;
     private String surname;
@@ -51,6 +57,43 @@ public class User {
         this.permissions = permissions;
         this.roles = roles;
     }
+
+    public User(UUID userId, String username) {
+        /*FOr update username*/
+        this.userId = userId;
+        this.username = username;
+    }
+
+    public User(String username, String password){
+        this.username = username;
+        this.password = password;
+    }
+
+    public User(UUID userId, String name, String surname){
+        this.userId = userId;
+        this.name = name;
+        this.surname = surname;
+    }
+
+    public User(JSONObject user) throws JSONException, ParseException {
+        //System.out.println("Ecco l'utente*********************+\n"+user);
+        this.userId = UUID.fromString(user.get("userId").toString());
+        this.name = user.get("name").toString();
+        this.surname = user.get("surname").toString();
+        this.birthDate = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss.sssZ").parse(user.get("birthDate").toString());
+        this.username = user.get("username").toString();
+        this.password = user.get("password").toString();
+        this.active = (int) user.get("active");
+        this.permissions = user.get("permissions").toString();
+        this.roles = user.get("roles").toString();
+
+        this.ownedCars = null;
+        this.reservations = null;
+        this.feedbacks = null;
+
+    }
+
+    public User(){};
 
     public UUID getUserId() {
         return userId;

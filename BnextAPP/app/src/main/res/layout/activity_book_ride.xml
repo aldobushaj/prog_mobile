@@ -11,13 +11,15 @@
         android:id="@+id/SearchRideButton"
         android:layout_width="115dp"
         android:layout_height="60dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="192dp"
         android:backgroundTint="#673AB7"
         android:text="@string/search_button_en"
         app:cornerRadius="18dp"
-        app:layout_constraintBottom_toTopOf="@+id/bookRideButton"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.945"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.588"
         app:rippleColor="#FF7043"
         app:strokeColor="#ff7043" />
 
@@ -30,14 +32,14 @@
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/bookRideButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.262"
+        app:layout_constraintHorizontal_bias="0.292"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.328" />
+        app:layout_constraintVertical_bias="0.309" />
 
     <TextView
         android:id="@+id/UserNameTextView"
-        android:layout_width="253dp"
+        android:layout_width="197dp"
         android:layout_height="101dp"
         android:text="Mario Rossi mariorossi@gmail.com"
         android:textColor="#232323"
@@ -45,10 +47,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/SpesaTextView"
         app:layout_constraintEnd_toStartOf="@+id/userAvatar"
-        app:layout_constraintHorizontal_bias="0.336"
+        app:layout_constraintHorizontal_bias="0.519"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.425" />
+        app:layout_constraintVertical_bias="0.395" />
 
     <ImageView
         android:id="@+id/userAvatar"
@@ -62,13 +64,12 @@
         app:layout_constraintHorizontal_bias="0.876"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.051"
-         />
+        app:layout_constraintVertical_bias="0.051" />
 
     <TextView
         android:id="@+id/SpesaTextView"
-        android:layout_width="277dp"
-        android:layout_height="48dp"
+        android:layout_width="267dp"
+        android:layout_height="31dp"
         android:text="@string/price_km_text_it"
         android:textColor="#2196F3"
         android:textSize="20sp"
@@ -86,10 +87,10 @@
         android:hint="Piazza Castello, Torino"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.27"
+        app:layout_constraintHorizontal_bias="0.29"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.427" />
+        app:layout_constraintVertical_bias="0.403" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/TimeChooseEditText"
@@ -97,11 +98,11 @@
         android:layout_height="45dp"
         android:hint="HH:MM"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/SearchRideButton"
-        app:layout_constraintHorizontal_bias="0.144"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.093"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spesaTextView4"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.597" />
 
     <TextView
         android:id="@+id/spesaTextView4"
@@ -112,10 +113,10 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.082"
+        app:layout_constraintHorizontal_bias="0.091"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.582" />
+        app:layout_constraintVertical_bias="0.544" />
 
     <TextView
         android:id="@+id/spesaTextView3"
@@ -126,22 +127,21 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.119"
+        app:layout_constraintHorizontal_bias="0.128"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.482" />
+        app:layout_constraintVertical_bias="0.451" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/DateChooseEditText"
         android:layout_width="158dp"
         android:layout_height="39dp"
         android:hint="GG/MM/AAAA"
-        app:layout_constraintBottom_toTopOf="@+id/TimeChooseEditText"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.09"
+        app:layout_constraintHorizontal_bias="0.114"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spesaTextView3"
-        app:layout_constraintVertical_bias="0.156" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/spesaTextView"
@@ -152,10 +152,10 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/bookRideButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.176"
+        app:layout_constraintHorizontal_bias="0.189"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.382" />
+        app:layout_constraintVertical_bias="0.36" />
 
     <ListView
         android:id="@+id/AvaiableCarsListView"
@@ -173,6 +173,7 @@
         android:id="@+id/bookRideButton"
         android:layout_width="225dp"
         android:layout_height="60dp"
+        android:layout_marginBottom="4dp"
         android:backgroundTint="#FF5722"
         android:text="@string/book_now_button_en"
         app:cornerRadius="18dp"
