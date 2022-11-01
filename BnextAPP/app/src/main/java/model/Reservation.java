@@ -1,10 +1,11 @@
 package model;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.UUID;
 
 
-public class Reservation {
+public class Reservation implements Serializable {
 
     private UUID reservationId;
     private Date startOfBook;

@@ -3,11 +3,12 @@ package model;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class Car {
+public class Car implements Serializable {
     private UUID carId;
     private String name, carModel;
     private String plateNumber;
@@ -27,8 +28,13 @@ public class Car {
         this.user = user;
     }
 
+    public Car(){}
     public Car(String plateNumber) {
         this.plateNumber = plateNumber;
+    }
+
+    public Car(UUID carId) {
+        this.carId = carId;
     }
 
     public UUID getCarId() {

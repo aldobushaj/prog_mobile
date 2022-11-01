@@ -6,65 +6,74 @@
     android:layout_height="match_parent"
     tools:context=".StatsCarActivity">
 
+    <View
+        android:id="@+id/divider3"
+        android:layout_width="409dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="20dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/divider"
+        app:layout_constraintVertical_bias="0.477" />
+
     <TextView
         android:id="@+id/priceHour"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Price Hour: "
         android:textStyle="normal"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/divider3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.045"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/priceKM"
-        app:layout_constraintVertical_bias="0.047" />
+        app:layout_constraintTop_toBottomOf="@+id/priceKM" />
 
     <TextView
         android:id="@+id/carPlateNumber"
         android:layout_width="233dp"
         android:layout_height="46dp"
+        android:layout_marginBottom="16dp"
         android:background="#FFFFFF"
         android:text="TextView"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.185"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/carName"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintBottom_toTopOf="@+id/carImage"
+        app:layout_constraintEnd_toEndOf="@+id/carName"
+        app:layout_constraintStart_toStartOf="@+id/carName"
+        app:layout_constraintTop_toBottomOf="@+id/carName" />
 
     <TextView
         android:id="@+id/carName"
         android:layout_width="233dp"
         android:layout_height="46dp"
+        android:layout_marginTop="10dp"
         android:background="#FFFFFF"
         android:text="TextView"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/carPlateNumber"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.185"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/carImage"
-        android:layout_width="187dp"
-        android:layout_height="136dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="160dp"
+        android:layout_height="120dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/carPlateNumber"
-        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/tesla_model_y" />
 
     <TextView
         android:id="@+id/priceKM"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:text="Price KM: "
         android:textStyle="normal"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -78,26 +87,28 @@
         android:id="@+id/divider"
         android:layout_width="409dp"
         android:layout_height="1dp"
-        android:layout_marginTop="6dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="10dp"
         android:background="?android:attr/listDivider"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/divider3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/carImage"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="@+id/guideline8"
+        app:layout_constraintVertical_bias="0.665" />
 
     <ListView
         android:id="@+id/commentSection"
-        android:layout_width="328dp"
-        android:layout_height="269dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="384dp"
+        android:layout_height="240dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/bookRideButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider"
-        app:layout_constraintVertical_bias="0.573"
-        tools:ignore="SpeakableTextPresentCheck">
-    </ListView>
+        app:layout_constraintTop_toBottomOf="@+id/divider3"
+        tools:ignore="SpeakableTextPresentCheck"></ListView>
 
     <Button
         android:id="@+id/bookRideButton"
@@ -110,7 +121,22 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/commentSection"
         app:strokeColor="#673AB7" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="102dp"
+        android:layout_marginEnd="411dp"
+        android:layout_marginBottom="629dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintGuide_begin="102dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

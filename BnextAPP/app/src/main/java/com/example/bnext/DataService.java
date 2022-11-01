@@ -4,7 +4,6 @@ import static android.util.Log.ERROR;
 
 import android.content.Context;
 import android.util.Log;
-import android.widget.EditText;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;

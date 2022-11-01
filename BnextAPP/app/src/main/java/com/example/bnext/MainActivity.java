@@ -6,11 +6,15 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.androidnetworking.AndroidNetworking;
+import com.androidnetworking.common.Priority;
+import com.androidnetworking.error.ANError;
+import com.androidnetworking.interfaces.JSONObjectRequestListener;
 
 import com.google.gson.Gson;
 
@@ -22,7 +26,7 @@ import model.User;
 
 public class MainActivity extends AppCompatActivity {
     // Token ottenuto dal login
-    String token = "";
+    static String token = "";
 
     TextView signInText, infoText, infoText2, infoText3, emailText, passwordText;
     EditText inputEmail, inputPassword;
@@ -47,118 +51,79 @@ public class MainActivity extends AppCompatActivity {
         facebookButton = findViewById(R.id.facebookButton);
         signUpButton = findViewById(R.id.signUpButton);
 
+        // Populate the UI with Fast Android Networking Library
+        AndroidNetworking.initialize(getApplicationContext());
 
 
-        //click listeners
-        loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (inputEmail.length() != 0 && inputPassword.length() != 0) {
-                    DataService dataService = new DataService(MainActivity.this);
+        loginButton.setOnClickListener(view -> {
+            if (inputEmail.length() != 0 && inputPassword.length() != 0) {
+
+                final User[] user = {new User(inputEmail.getText().toString(), inputPassword.getText().toString())};
+                AndroidNetworking.initialize(getApplicationContext());
+                AndroidNetworking.post("http://10.0.2.2:8080/user/signin")
+                        //negli header per il token fare sempre così .addHeaders("Authorization", "Bearer eyJhbGciOiJIUzUxMiJ9")
+                        .addApplicationJsonBody(user[0])
+                        .setPriority(Priority.LOW)
+                        .build()
+                        .getAsJSONObject(new JSONObjectRequestListener() {
+                            @Override
+                            public void onResponse(JSONObject response) {
+                                Log.println(Log.INFO, "signIn result", "Inizio");
 
 
-                    dataService.login(inputEmail.getText().toString(),inputPassword.getText().toString(), new DataService.VolleyResponseListener() {
-                        @Override
-                        public void onError(String message) {
-                            Toast.makeText(MainActivity.this, "Something went wrong with Log In", Toast.LENGTH_SHORT).show();
-                        }
+                                // Qua cosa   fare se la richiesta funziona
 
-                        @Override
-                        public void onResponse(JSONObject response) {
-                            // memorizzo il token una volta fatta l'autenticazione, per usarlo nello prossime richieste
-                            try {
-                                token = (String) response.get("token");
-                                Gson gson = new Gson(); // Or use new GsonBuilder().create();
-                                currentUser = gson.fromJson(response.get("user").toString(), User.class); // deserializes json into target2
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                            //Toast.makeText(MainActivity.this, "Value of data : " + response, Toast.LENGTH_SHORT).show();
+                                try {
+                                    token = (String) response.get("token");
+                                    Gson gson = new Gson(); // Or use new GsonBuilder().create();
+                                    currentUser = gson.fromJson(response.get("user").toString(), User.class); // deserializes json into target2
+                                    //System.out.println("####################################\n"+currentUser.toString());
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
 
-                            Log.println(Log.INFO, "signIn result", "Success");
+                                Log.println(Log.INFO, "SignIn result", "Success");
+                                //og.println(Log.INFO,"User: ", user.toString());
 
-                            // il login ha avuto successo, vado alla prossima pagina
-                            Intent intent = new Intent(MainActivity.this, BookRide.class);
+                                // il login ha avuto successo, vado alla prossima pagina
+                                Intent intent = new Intent(MainActivity.this, BookRide.class);
 
-                            // Quindi posso passare il token di autenticazione all'altra activity
-                            intent.putExtra("token", token);
-                            intent.putExtra("currentUser",currentUser);
+                                // Quindi posso passare il token di autenticazione all'altra activity
+                                intent.putExtra("currentUser",currentUser);
+                                intent.putExtra("token",  token);
 
-                            //Create the bundle
+                                //Create the bundle
                             /*Bundle b = new Bundle();
                             //Add your data to bundle
                             b.putString("token", token);
                             intent.putExtras(b);*/
 
-                            startActivity(intent);
-                        }
-                    });
+                                startActivity(intent);
+                            }
 
+                            @Override
+                            public void onError(ANError error) {
+                                // Qua cosa   fare se la richiesta va in errore
+                                Toast.makeText(MainActivity.this, "Something went wrong with Log In", Toast.LENGTH_SHORT).show();
+                                System.out.println(error);
+                            }
 
-                }else{
-                    Log.println(Log.INFO, "signIn result", "You must enter username and password to login");
-                }
+                        });
+
+            }else{
+                Toast.makeText(MainActivity.this, "You must enter username and password to login", Toast.LENGTH_SHORT).show();
+                Log.println(Log.INFO, "signIn result", "You must enter username and password to login");
             }
         });
 
 
 
-        signUpButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-                Intent intent = new Intent(MainActivity.this, SignUp.class);
-                startActivity(intent);
-            }
+        signUpButton.setOnClickListener(view -> {
+
+            Intent intent = new Intent(MainActivity.this, SignUp.class);
+            startActivity(intent);
         });
 
-
-
-
-        /*btn_getWeatherByID.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                DataService  dataService = new DataService(MainActivity.this);
-
-                dataService.getCar(token, new DataService.ArrayResponseListener() {
-                    @Override
-                    public void onError(String message) {
-                        Toast.makeText(MainActivity.this, message , Toast.LENGTH_SHORT).show();
-                    }
-
-                   @Override
-                    public void onResponse(JSONArray response) {
-                        Toast.makeText(MainActivity.this,"Value of data : " + response, Toast.LENGTH_SHORT).show();
-                    }
-                });
-
-                //Log.println(Log.INFO, "signIn result", "bitcoin");
-                //Toast.makeText(MainActivity.this,"Value of data : " + bitcoin, Toast.LENGTH_SHORT).show();
-
-            }
-            /*@Override
-            public void onClick(View view) {
-                Toast.makeText(MainActivity.this, "You clicked me 2", Toast.LENGTH_SHORT).show();
-            }*/
-        /*});
-
-
-
-
-
-
-
-        btn_getWeatherByName.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent intent = new Intent(MainActivity.this, StatsCarActivity.class);
-                startActivity(intent);
-                /*Toast.makeText(
-                        MainActivity.this,
-                        "You typed " + et_dataInput.getText().toString(),
-                        Toast.LENGTH_SHORT).show();*/
-           /* }
-        });*/
     }
 }

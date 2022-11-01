@@ -20,10 +20,11 @@
 
 package model;
 
+import java.io.Serializable;
 import java.util.Objects;
 import java.util.UUID;
 
-public class Position {
+public class Position implements Serializable {
 
     private UUID id;
     private Double latitude;
