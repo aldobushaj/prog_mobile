@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -111,8 +112,7 @@ public class BookRide extends AppCompatActivity {
                             Log.d("Updated user", currentUser.toString());
                             Toast.makeText(BookRide.this, s, Toast.LENGTH_LONG).show();
                             // Così ritorniamo alla home dopo l'update
-                            Intent intent = new Intent(view.getContext(), MainActivity.class);
-                            view.getContext().startActivity(intent);
+
                         }
 
                         @Override
