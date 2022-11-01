@@ -65,6 +65,7 @@ public class UserDetailsActivity extends AppCompatActivity {
                     .addHeaders("accept-encoding", "gzip, deflate, br")
                     //.addHeaders("content-type","application/json")
                     //.setContentType("application/json; charset=utf-8")
+
                     .addApplicationJsonBody(updatedUser)
                     //.addJSONObjectBody(jsonObject) // posting json
                     .setPriority(Priority.LOW)

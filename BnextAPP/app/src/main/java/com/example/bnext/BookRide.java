@@ -18,6 +18,7 @@ import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONArrayRequestListener;
+import com.androidnetworking.interfaces.StringRequestListener;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;
@@ -74,31 +75,57 @@ public class BookRide extends AppCompatActivity {
 
         //click listener rimpiazzato con una lambda
         SearchRideButton.setOnClickListener(view -> {
+            AndroidNetworking.initialize(getApplicationContext());
+            // pipedream https://eo36hxzz25l7d4r.m.pipedream.net
+            /*Example request as string JSON parsable
+            * {
+                 "startOfBook" : "2020-07-27T13:31:00",
+                  "endOfBook": "2020-07-27T14:10:00"
+               }
+            * */
+            //String payload ="{ 'startOfBook:' "+ DateChooseEditText.getText()
+            JSONObject jsonObject = new JSONObject();
+            try {
+                jsonObject.put("startOfBook",  DateChooseEditText.getText());
+                jsonObject.put("endOfBook", DateChooseEditText.getText());
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            //localhost:8080/reservations/availableCars
+            // https://eo36hxzz25l7d4r.m.pipedream.net
+            AndroidNetworking.post("http://10.0.2.2:8080/reservations/availableCars")
+                    //negli header per il token fare sempre così .addHeaders("Authorization", "Bearer eyJhbGciOiJIUzUxMiJ9")
+                    .addHeaders("Authorization", "Bearer " + token)
+                    .addHeaders("accept", "*/*")
+                    .addHeaders("accept-encoding", "gzip, deflate, br")
+                    //.addHeaders("content-type","application/json")
+                    //.setContentType("application/json; charset=utf-8")
+                    //.addApplicationJsonBody(DateChooseEditText.getText())
+                    .addJSONObjectBody(jsonObject) // posting json
+                    .setPriority(Priority.LOW)
+                    .build()
+                    .getAsString(new StringRequestListener() {
+                        @Override
+                        public void onResponse(String s) {
+                            // Qua cosa   fare se la richiesta funziona
+                            Log.d("Updated user", currentUser.toString());
+                            Toast.makeText(BookRide.this, s, Toast.LENGTH_LONG).show();
+                            // Così ritorniamo alla home dopo l'update
+                            Intent intent = new Intent(view.getContext(), MainActivity.class);
+                            view.getContext().startActivity(intent);
+                        }
 
-            //Creo il dataService e passo questa activity come context
-            DataService  dataService = new DataService(BookRide.this);
-            /*
-            dataService.signIn(new DataService.VolleyResponseListener() {
-                @Override
-                public void onError(String message) {
-                    Toast.makeText(BookRide.this,"Something wrong BookRide Search  " , Toast.LENGTH_SHORT).show();
-                }
+                        @Override
+                        public void onError(ANError anError) {
+                            // Qua cosa   fare se la richiesta va in errore
+                            Toast.makeText(BookRide.this, anError.getErrorDetail(), Toast.LENGTH_LONG).show();
+                            System.out.println(anError);
+                        }
+                    });
 
-                @Override
-                public void onResponse(JSONObject response) {
-                    // memorizzo il token una volta fatta l'autenticazione, per usarlo nello prossime richieste
-                    try {
-                        token= (String) response.get("token");
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                    Toast.makeText(MainActivity.this,"Value of data : " + response, Toast.LENGTH_SHORT).show();
-                }
-            });
-            Log.println(Log.INFO, "signIn result", "bitcoin");
-            //Toast.makeText(MainActivity.this,"Value of data : " + bitcoin, Toast.LENGTH_SHORT).show();
-        */
         });
+
+
 
 
         userAvatar.setOnClickListener(view -> {
