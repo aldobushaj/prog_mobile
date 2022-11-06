@@ -102,7 +102,8 @@ public class AddComment extends AppCompatActivity {
                         public void onResponse(String s) {
                             // Qua cosa   fare se la richiesta funziona
                             //Log.d("Updated user", currentUser.toString());
-                            //Toast.makeText(BookRide.this, s, Toast.LENGTH_LONG).show();
+                            Toast.makeText(AddComment.this, "Comment added SUCESFULLY!", Toast.LENGTH_SHORT).show();
+                            feedbackSection.setText("");
                             // Così ritorniamo alla home dopo l'update
 
                         }
