@@ -2,6 +2,9 @@ package com.example.bnext;
 
 
 
+import static com.example.bnext.MainActivity.token;
+import static com.example.bnext.MainActivity.url;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -37,7 +40,7 @@ import model.Car;
 import model.User;
 
 public class BookRide extends AppCompatActivity {
-    String token = "";
+    //String token = "";
     Button SearchRideButton, BookRideButton;
     TextView UserNameTextView;
     EditText PriceKmEditText, DestinationEditText, DateChooseEditText, TimeChooseEditText;
@@ -54,7 +57,7 @@ public class BookRide extends AppCompatActivity {
 
         // Recupero il token ottenuto dalla pagina di login
         Bundle bundle = getIntent().getExtras();
-        token = bundle.getString("token");
+        //token = bundle.getString("token");
         Log.d("Token BookRide",token);
         // Recupero lo user ottenuto dalla pagina di login
         currentUser = (User) getIntent().getSerializableExtra("currentUser");
@@ -120,7 +123,7 @@ public class BookRide extends AppCompatActivity {
             }
             //localhost:8080/reservations/availableCars
             // https://eo36hxzz25l7d4r.m.pipedream.net
-            AndroidNetworking.post("http://10.0.2.2:8080/reservations/availableCars")
+            AndroidNetworking.post(url+"reservations/availableCars")
                     //negli header per il token fare sempre così .addHeaders("Authorization", "Bearer eyJhbGciOiJIUzUxMiJ9")
                     .addHeaders("Authorization", "Bearer " + token)
                     .addHeaders("accept", "*/*")
@@ -162,7 +165,7 @@ public class BookRide extends AppCompatActivity {
                             // the context and arrayList created above
 
 
-                            CustomCarAdapter customViewAdapter = new CustomCarAdapter(BookRide.this, availableCars,token);
+                            CustomCarAdapter customViewAdapter = new CustomCarAdapter(BookRide.this, availableCars,currentUser);
 
                             // set the CustomViewAdapter for ListView
                             AvailableCarsListView.setAdapter(customViewAdapter);
@@ -184,7 +187,7 @@ public class BookRide extends AppCompatActivity {
 
         userAvatar.setOnClickListener(view -> {
             Intent intent = new Intent(view.getContext(), UserDetailsActivity.class);
-            intent.putExtra("token", token);
+            //intent.putExtra("token", token);
             intent.putExtra("currentUser",currentUser);
             view.getContext().startActivity(intent);
 
@@ -198,7 +201,7 @@ public class BookRide extends AppCompatActivity {
             * */
             Intent intent = new Intent(view.getContext(), BookActivity.class);
             // Quindi posso passare il token di autenticazione all'altra activity
-            intent.putExtra("token", token);
+            //intent.putExtra("token", token);
             intent.putExtra("currentUser",currentUser);
             view.getContext().startActivity(intent);
 

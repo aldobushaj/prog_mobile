@@ -28,6 +28,7 @@ import model.User;
 public class MainActivity extends AppCompatActivity {
     // Token ottenuto dal login
     static String token = "";
+    static String url = "http://10.0.2.2:8080/";
 
     TextView signInText, infoText, infoText2, infoText3, emailText, passwordText;
     EditText inputEmail, inputPassword;
@@ -61,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
 
                 final User[] user = {new User(inputEmail.getText().toString(), inputPassword.getText().toString())};
                 AndroidNetworking.initialize(getApplicationContext());
-                AndroidNetworking.post("http://10.0.2.2:8080/user/signin")
+                AndroidNetworking.post(url+"user/signin")
                         //negli header per il token fare sempre così .addHeaders("Authorization", "Bearer eyJhbGciOiJIUzUxMiJ9")
                         .addApplicationJsonBody(user[0])
                         .setPriority(Priority.LOW)
@@ -93,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
 
                                 // Quindi posso passare il token di autenticazione all'altra activity
                                 intent.putExtra("currentUser",currentUser);
-                                intent.putExtra("token",  token);
+                                //intent.putExtra("token",  token);
 
                                 //Create the bundle
                             /*Bundle b = new Bundle();

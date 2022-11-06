@@ -1,4 +1,6 @@
 package com.example.bnext;
+import static com.example.bnext.MainActivity.url;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -42,7 +44,6 @@ public class AddComment extends AppCompatActivity {
     ImageView carImage, userImage;
     Button addFeedback;
     User currentUser;
-    String url = "http://10.0.2.2:8080/";
     String carID,userID;
     ArrayList<Feedback> feedbacks = new ArrayList<>();
 
@@ -86,7 +87,7 @@ public class AddComment extends AppCompatActivity {
                 e.printStackTrace();
             }
             System.out.println("**************\n"+jsonObject);
-            AndroidNetworking.post("http://10.0.2.2:8080/feedbacks/addFeed")
+            AndroidNetworking.post(url+"feedbacks/addFeed")
                     //negli header per il token fare sempre così .addHeaders("Authorization", "Bearer eyJhbGciOiJIUzUxMiJ9")
                     .addHeaders("Authorization", "Bearer " + token)
                     .addHeaders("accept", "*/*")

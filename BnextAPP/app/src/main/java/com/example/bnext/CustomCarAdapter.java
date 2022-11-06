@@ -28,18 +28,19 @@ import java.util.ArrayList;
 
 import model.Car;
 import model.Feedback;
+import model.User;
 
 public class CustomCarAdapter extends ArrayAdapter<Car> {
 
     ArrayList<Car> availableCars;
-    String token;
+    User user;
     // invoke the suitable constructor of the ArrayAdapter class
-    public CustomCarAdapter(@NonNull Context context, ArrayList<Car> availableCars, String token){
+    public CustomCarAdapter(@NonNull Context context, ArrayList<Car> availableCars, User user){
         // pass the context and arrayList for the super
         // constructor of the ArrayAdapter class
         super(context, 0, availableCars);
         this.availableCars = availableCars;
-        this.token = token;
+        this.user = user;
 }
 
     @SuppressLint("SetTextI18n")
@@ -72,7 +73,7 @@ public class CustomCarAdapter extends ArrayAdapter<Car> {
         // Così quando clicco su una macchina mi manda alla pagina delle specifiche
         currentItemView.setOnClickListener(view -> {
             Intent intent = new Intent(view.getContext(), StatsCarActivity.class);
-            intent.putExtra("token", token);
+            intent.putExtra("user", user);
             intent.putExtra("currentCar",currentCar);
             view.getContext().startActivity(intent);
         });

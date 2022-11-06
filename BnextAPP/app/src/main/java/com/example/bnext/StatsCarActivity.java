@@ -2,6 +2,9 @@ package com.example.bnext;
 
 
 
+import static com.example.bnext.MainActivity.token;
+import static com.example.bnext.MainActivity.url;
+
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -35,9 +38,9 @@ import model.User;
 
 public class StatsCarActivity extends AppCompatActivity {
 
-    String token ="eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwcm92YSIsImlhdCI6MTY2NzcyOTIyNiwiZXhwIjoxNjY3NzQ3MjI2fQ.2klve4VNBmAgVmx6SbT1p0m0qIujqYysMMvlUeiaDGqvPYrNaYHeBrtOX7ccxxzLfxoeAlyv05jm8T7zFyNTmg";
+    //String token ="eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwcm92YSIsImlhdCI6MTY2Nzc1MTM3OSwiZXhwIjoxNjY3NzY5Mzc5fQ.JpSoP74LAP3CWYweJ__177tYVCVzb1bHQmwwbr6MMP15uZgjDm8rTkhz718K-39h01QXdZ_mK_z0N5rOuMyrGQ";
 
-    String url = "http://10.0.2.2:8080/";
+
     String carID,userID;
     TextView carName, carPlateNumber, priceHour, priceKM;
     Button bookRideButton;
@@ -55,8 +58,10 @@ public class StatsCarActivity extends AppCompatActivity {
 
         // Recupero il token ottenuto dalla pagina di login
         Bundle bundle = getIntent().getExtras();
-        token = bundle.getString("token");
+        //token = bundle.getString("token");
         Car currentCar=  (Car) getIntent().getSerializableExtra("currentCar");
+        User currentUser=  (User) getIntent().getSerializableExtra("user");
+
 
         // ---- assign values to each control of the layout----
         carName = findViewById(R.id.carName);
@@ -78,7 +83,9 @@ public class StatsCarActivity extends AppCompatActivity {
         // questo prenderà il valore che passiamo dall'activity Home/BookRide sia per l'user che per la macchina
         //carID = "991f9af1-bed7-4911-b46c-6ac88080e046";
         carID = String.valueOf(currentCar.getCarId());
-        //userID= String.valueOf(currentCar.getUser().getUserId());
+        System.out.println(currentCar);
+        userID= String.valueOf(currentUser.getUserId());
+        //userID = "579d6ff5-487b-43eb-9cb8-3279703c41cd";
         // -----------------------------------------------------------------------------------------------------
 
         // Populate the UI with Fast Android Networking Library
@@ -105,18 +112,29 @@ public class StatsCarActivity extends AppCompatActivity {
                                         .create();
                                 //System.out.println("###############\n"+response.get(i));
                                 //Car car = new Car(UUID.fromString(carID));
-                                //User user = new User(UUID.fromString(userID),resp.get("nomeUtente").toString(), resp.get("cognomeUtente").toString());
+                                User user = new User(UUID.fromString(userID),resp.get("nomeUtente").toString(), resp.get("cognomeUtente").toString());
                                 //Feedback feed = new Feedback(UUID.fromString(resp.get("idFeedback").toString()), resp.get("comment").toString(), car, user);
                                 Feedback feed = gson.fromJson(resp.toString(), Feedback.class); // deserializes json into target2
+                                feed.setUser(user);
                                 feedbacks.add(feed);
 
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
                         }
-                        //System.out.println("Finito");
-                        Log.println(Log.INFO,"Feedbacks: ", feedbacks.toString());
+                        // Now create the instance of the CustomViewAdapter and pass
+                        // the context and arrayList created above
+                        CustomViewAdapter customViewAdapter = new CustomViewAdapter(StatsCarActivity.this, feedbacks);
 
+                        // set the CustomViewAdapter for ListView
+                        commentSection.setAdapter(customViewAdapter);
+                        bookRideButton.setOnClickListener(view -> {
+
+                            Intent intent = new Intent(StatsCarActivity.this, BookActivity.class);
+                            startActivity(intent);
+                        });
+
+                        Log.println(Log.INFO,"Feedbacks: ", feedbacks.toString());
                     }
 
                     @Override
@@ -129,28 +147,12 @@ public class StatsCarActivity extends AppCompatActivity {
 
                 });
 
-
-        // Now create the instance of the CustomViewAdapter and pass
-        // the context and arrayList created above
-        CustomViewAdapter customViewAdapter = new CustomViewAdapter(StatsCarActivity.this, feedbacks);
-
-        // set the CustomViewAdapter for ListView
-        commentSection.setAdapter(customViewAdapter);
-
-
-        //System.out.println("*************************ççççççççççç"+feedbacks);
-
-
-        bookRideButton.setOnClickListener(view -> {
-
-            Intent intent = new Intent(StatsCarActivity.this, BookActivity.class);
-            startActivity(intent);
-        });
-
-        //carName.setTypeface(null, Typeface.BOLD_ITALIC);
         priceHour.setTypeface(null, Typeface.BOLD);
         priceKM.setTypeface(null, Typeface.BOLD);
 
+
+
+        //carName.setTypeface(null, Typeface.BOLD_ITALIC);
         //carName.setTypeface(null, Typeface.ITALIC);
         //carName.setTypeface(null, Typeface.NORMAL);*/
     }
