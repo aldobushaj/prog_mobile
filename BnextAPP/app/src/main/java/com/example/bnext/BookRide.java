@@ -137,7 +137,7 @@ public class BookRide extends AppCompatActivity {
                         public void onResponse(JSONArray response) {
                             // Qua cosa   fare se la richiesta funziona
                             Log.d("Updated user", currentUser.toString());
-                            Toast.makeText(BookRide.this, response.toString(), Toast.LENGTH_LONG).show();
+                            //Toast.makeText(BookRide.this, response.toString(), Toast.LENGTH_LONG).show();
 
                             //Create the list of avaiable cars
                             for (int i=0; i< response.length(); i++) {
@@ -162,7 +162,7 @@ public class BookRide extends AppCompatActivity {
                             // the context and arrayList created above
 
 
-                            CustomCarAdapter customViewAdapter = new CustomCarAdapter(BookRide.this, availableCars);
+                            CustomCarAdapter customViewAdapter = new CustomCarAdapter(BookRide.this, availableCars,token);
 
                             // set the CustomViewAdapter for ListView
                             AvailableCarsListView.setAdapter(customViewAdapter);

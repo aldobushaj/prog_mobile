@@ -19,6 +19,8 @@ import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONArrayRequestListener;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -51,6 +53,11 @@ public class StatsCarActivity extends AppCompatActivity {
         setContentView(R.layout.activity_stats_car);
         setTitle("Stats car");
 
+        // Recupero il token ottenuto dalla pagina di login
+        Bundle bundle = getIntent().getExtras();
+        token = bundle.getString("token");
+        Car currentCar=  (Car) getIntent().getSerializableExtra("currentCar");
+
         // ---- assign values to each control of the layout----
         carName = findViewById(R.id.carName);
         carPlateNumber = findViewById(R.id.carPlateNumber);
@@ -61,16 +68,17 @@ public class StatsCarActivity extends AppCompatActivity {
         carImage = findViewById(R.id.carImage);
 
         // modify text
-        carName.setText("Tesla Model Y");
-        carPlateNumber.setText("Plate number: ABC123");
+        carName.setText(currentCar.getName());
+        carPlateNumber.setText("Plate number: " + currentCar.getPlateNumber());
         priceKM.append("5€");
         priceHour.append("50€");
 
 
         // ------------------------------------- DA SISTEMARE --------------------------------------------------
         // questo prenderà il valore che passiamo dall'activity Home/BookRide sia per l'user che per la macchina
-        carID = "991f9af1-bed7-4911-b46c-6ac88080e046";
-        userID=carID;
+        //carID = "991f9af1-bed7-4911-b46c-6ac88080e046";
+        carID = String.valueOf(currentCar.getCarId());
+        //userID= String.valueOf(currentCar.getUser().getUserId());
         // -----------------------------------------------------------------------------------------------------
 
         // Populate the UI with Fast Android Networking Library
@@ -91,11 +99,15 @@ public class StatsCarActivity extends AppCompatActivity {
                             try {
                                 // recupero l'oggetto
                                 JSONObject resp = (JSONObject) response.get(i);
-                                //System.out.println("###############\n"+response.get(i));
-                                Car car = new Car(UUID.fromString(carID));
-                                User user = new User(UUID.fromString(userID),resp.get("nomeUtente").toString(), resp.get("cognomeUtente").toString());
 
-                                Feedback feed = new Feedback(UUID.fromString(resp.get("idFeedback").toString()), resp.get("comment").toString(), car, user);
+                                Gson gson  = new GsonBuilder()
+                                        .setDateFormat("yyyy-MM-dd'T'HH:mm:ss")
+                                        .create();
+                                //System.out.println("###############\n"+response.get(i));
+                                //Car car = new Car(UUID.fromString(carID));
+                                //User user = new User(UUID.fromString(userID),resp.get("nomeUtente").toString(), resp.get("cognomeUtente").toString());
+                                //Feedback feed = new Feedback(UUID.fromString(resp.get("idFeedback").toString()), resp.get("comment").toString(), car, user);
+                                Feedback feed = gson.fromJson(resp.toString(), Feedback.class); // deserializes json into target2
                                 feedbacks.add(feed);
 
                             } catch (JSONException e) {
