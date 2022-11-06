@@ -17,6 +17,7 @@ import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -75,7 +76,9 @@ public class MainActivity extends AppCompatActivity {
 
                                 try {
                                     token = (String) response.get("token");
-                                    Gson gson = new Gson(); // Or use new GsonBuilder().create();
+                                    Gson gson  = new GsonBuilder()
+                                            .setDateFormat("yyyy-MM-dd'T'HH:mm:ss")
+                                            .create();
                                     currentUser = gson.fromJson(response.get("user").toString(), User.class); // deserializes json into target2
                                     //System.out.println("####################################\n"+currentUser.toString());
                                 } catch (JSONException e) {

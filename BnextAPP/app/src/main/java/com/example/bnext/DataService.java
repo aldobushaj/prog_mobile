@@ -57,7 +57,7 @@ public class DataService {
                     // Log.println(Log.INFO, "result signIn", String.valueOf(response));
 
                 }, error -> {
-                    // TODO: Handle error
+
                     //return error.getStackTrace().toString();
                     volleyResponseListener.onError("Something wrong with the request");
                     StringWriter sw = new StringWriter();
@@ -109,11 +109,7 @@ public class DataService {
         MySingleton.getInstance(context).addToRequestQueue(request);
     }
 
-   /*
-    public List<CryptoPriceModel> getPriceByName (String cryptoName){
-        //TODO
-    }
-    */
+
 
 
 

@@ -19,13 +19,21 @@ import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONArrayRequestListener;
-import com.androidnetworking.interfaces.StringRequestListener;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
+
+import model.Car;
 import model.User;
 
 public class BookRide extends AppCompatActivity {
@@ -36,6 +44,9 @@ public class BookRide extends AppCompatActivity {
     ListView AvailableCarsListView;
     ImageView userAvatar;
     User currentUser;
+
+    // ArrayList che contiene la lista di oggetti Feedback appartenenti ad una macchina (macchina passata da un altra activity)
+    final ArrayList<Car> availableCars = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,11 +95,26 @@ public class BookRide extends AppCompatActivity {
                   "endOfBook": "2020-07-27T14:10:00"
                }
             * */
-            //String payload ="{ 'startOfBook:' "+ DateChooseEditText.getText()
+
+            DateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.ENGLISH);
+            Date date = null;
+            String DateToParseString = "";
+            try {
+                DateToParseString = DateChooseEditText.getText().toString()+"T"+TimeChooseEditText.getText().toString()+":00";
+                date = format.parse(DateToParseString);
+            } catch (ParseException e) {
+                Log.e("Error parsing date",DateChooseEditText.getText().toString());
+                e.printStackTrace();
+            }
+            /*
+            * Il backend vuole le date
+            * fatte così "2022-07-27T15:00:00"
+            *
+            * */
             JSONObject jsonObject = new JSONObject();
             try {
-                jsonObject.put("startOfBook",  DateChooseEditText.getText());
-                jsonObject.put("endOfBook", DateChooseEditText.getText());
+                jsonObject.put("startOfBook",  DateToParseString);
+                jsonObject.put("endOfBook",DateToParseString);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -105,13 +131,41 @@ public class BookRide extends AppCompatActivity {
                     .addJSONObjectBody(jsonObject) // posting json
                     .setPriority(Priority.LOW)
                     .build()
-                    .getAsString(new StringRequestListener() {
+
+                    .getAsJSONArray(new JSONArrayRequestListener() {
                         @Override
-                        public void onResponse(String s) {
+                        public void onResponse(JSONArray response) {
                             // Qua cosa   fare se la richiesta funziona
                             Log.d("Updated user", currentUser.toString());
-                            Toast.makeText(BookRide.this, s, Toast.LENGTH_LONG).show();
-                            // Così ritorniamo alla home dopo l'update
+                            Toast.makeText(BookRide.this, response.toString(), Toast.LENGTH_LONG).show();
+
+                            //Create the list of avaiable cars
+                            for (int i=0; i< response.length(); i++) {
+                                try {
+                                    // recupero l'oggetto
+                                    JSONObject resp = (JSONObject) response.get(i);
+                                    Gson gson  = new GsonBuilder()
+                                            .setDateFormat("yyyy-MM-dd'T'HH:mm:ss")
+                                            .create();
+                                    Car foundCar = gson.fromJson(resp.toString(), Car.class); // deserializes json into target2
+
+
+                                    availableCars.add(foundCar);
+
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                            Log.println(Log.INFO,"Available Cars: ", availableCars.toString());
+
+                            // Now create the instance of the CustomViewAdapter and pass
+                            // the context and arrayList created above
+
+
+                            CustomCarAdapter customViewAdapter = new CustomCarAdapter(BookRide.this, availableCars);
+
+                            // set the CustomViewAdapter for ListView
+                            AvailableCarsListView.setAdapter(customViewAdapter);
 
                         }
 
