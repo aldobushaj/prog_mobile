@@ -6,6 +6,9 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import model.Car;
+import model.User;
+
 public class BookActivity extends AppCompatActivity {
 
     TextView infoText, oreText, priceText;
@@ -25,6 +28,12 @@ public class BookActivity extends AppCompatActivity {
 
         priceText.setText("Price / Hour: 12........");
 
+
+        Car currentCar=  (Car) getIntent().getSerializableExtra("currentCar");
+        User currentUser=  (User) getIntent().getSerializableExtra("user");
+
+
+        System.out.println("################\n"+currentUser+"\n"+currentCar);
 
     }
 }

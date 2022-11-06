@@ -155,5 +155,20 @@ public class StatsCarActivity extends AppCompatActivity {
         //carName.setTypeface(null, Typeface.BOLD_ITALIC);
         //carName.setTypeface(null, Typeface.ITALIC);
         //carName.setTypeface(null, Typeface.NORMAL);*/
+
+        bookRideButton.setOnClickListener(view -> {
+            /* Per ora va direttamente,
+            dopo va fatto che si procede a quella dopo
+            selezionando una macchina e passando all'activity
+            seguente le informazioni
+            * */
+            Intent intent = new Intent(view.getContext(), BookActivity.class);
+            // Quindi posso passare il token di autenticazione all'altra activity
+            //intent.putExtra("token", token);
+            intent.putExtra("currentUser",currentUser);
+            intent.putExtra("currentCar",currentCar);
+            view.getContext().startActivity(intent);
+
+        });
     }
 }
