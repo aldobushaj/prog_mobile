@@ -103,6 +103,7 @@ public class AddComment extends AppCompatActivity {
                             // Qua cosa   fare se la richiesta funziona
                             //Log.d("Updated user", currentUser.toString());
                             Toast.makeText(AddComment.this, "Comment added SUCESFULLY!", Toast.LENGTH_SHORT).show();
+                            // Ripulisco l'edit text contenete il feedback appena aggiunto
                             feedbackSection.setText("");
                             // Così ritorniamo alla home dopo l'update
 
