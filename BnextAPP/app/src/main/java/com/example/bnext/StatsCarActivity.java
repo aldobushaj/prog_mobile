@@ -83,7 +83,7 @@ public class StatsCarActivity extends AppCompatActivity {
         // questo prenderà il valore che passiamo dall'activity Home/BookRide sia per l'user che per la macchina
         //carID = "991f9af1-bed7-4911-b46c-6ac88080e046";
         carID = String.valueOf(currentCar.getCarId());
-        System.out.println(currentCar);
+        //System.out.println(currentCar);
         userID= String.valueOf(currentUser.getUserId());
         //userID = "579d6ff5-487b-43eb-9cb8-3279703c41cd";
         // -----------------------------------------------------------------------------------------------------
@@ -128,11 +128,7 @@ public class StatsCarActivity extends AppCompatActivity {
 
                         // set the CustomViewAdapter for ListView
                         commentSection.setAdapter(customViewAdapter);
-                        bookRideButton.setOnClickListener(view -> {
 
-                            Intent intent = new Intent(StatsCarActivity.this, BookActivity.class);
-                            startActivity(intent);
-                        });
 
                         Log.println(Log.INFO,"Feedbacks: ", feedbacks.toString());
                     }
