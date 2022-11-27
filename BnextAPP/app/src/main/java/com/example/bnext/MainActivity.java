@@ -43,14 +43,14 @@ public class MainActivity extends AppCompatActivity {
 
         signInText = findViewById(R.id.signInText);
         infoText = findViewById(R.id.infoText);
-        infoText2 = findViewById(R.id.infoText2);
+        //infoText2 = findViewById(R.id.infoText2);
         infoText3 = findViewById(R.id.infoText3);
         emailText = findViewById(R.id.emailText);
         passwordText = findViewById(R.id.passwordText);
         inputEmail = findViewById(R.id.inputEmail);
         inputPassword = findViewById(R.id.inputPassword);
         loginButton = findViewById(R.id.loginButton);
-        facebookButton = findViewById(R.id.facebookButton);
+        //facebookButton = findViewById(R.id.facebookButton);
         signUpButton = findViewById(R.id.signUpButton);
 
         // Populate the UI with Fast Android Networking Library

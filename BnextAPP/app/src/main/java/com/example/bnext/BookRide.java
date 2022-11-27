@@ -29,10 +29,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.sql.Time;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
@@ -61,6 +63,7 @@ public class BookRide extends AppCompatActivity {
         Log.d("Token BookRide",token);
         // Recupero lo user ottenuto dalla pagina di login
         currentUser = (User) getIntent().getSerializableExtra("currentUser");
+        Date currentTime = Calendar.getInstance().getTime();
         Log.d("User BookRide", currentUser.toString());
 
         // ---- assign values to each control of the layout----
@@ -79,6 +82,12 @@ public class BookRide extends AppCompatActivity {
         DestinationEditText = findViewById(R.id.DestinationEditText);
         DateChooseEditText = findViewById(R.id.DateChooseEditText);
         TimeChooseEditText = findViewById(R.id.TimeChooseEditText);
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault());
+        String currentDate = sdf.format(new Date());
+        String[] parts = currentDate.split(" ");
+        DateChooseEditText.setText(parts[0]);
+        TimeChooseEditText.setText(parts[1]);
 
         // List View
         AvailableCarsListView = findViewById(R.id.AvaiableCarsListView);

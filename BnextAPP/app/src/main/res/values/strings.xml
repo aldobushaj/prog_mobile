@@ -32,4 +32,10 @@
     <string name="add_feedback">Add Feedback</string>
     <string name="pick_time" />
 
+
+
+    <!-- ->
+    MapBox configuration
+    </!-->
+    <string name="mapbox_access_token">pk.eyJ1Ijoic2lsdmlvZiIsImEiOiJjbDI1emRvOGcyZHJzM2JtdDJjam53NG1tIn0.Y6eP5eVbe20ailD6JExa_w</string>
 </resources>

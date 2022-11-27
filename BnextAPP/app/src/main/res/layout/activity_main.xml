@@ -158,7 +158,7 @@
         app:layout_constraintStart_toStartOf="@+id/signInText"
         app:layout_constraintTop_toBottomOf="@+id/signInText" />
 
-
+    <!--
     <Button
         android:id="@+id/facebookButton"
         style="@style/Widget.MaterialComponents.TabLayout.Colored"
@@ -174,6 +174,7 @@
         app:layout_constraintStart_toStartOf="@+id/infoText2"
         app:layout_constraintTop_toBottomOf="@+id/infoText2" />
 
+
     <TextView
         android:id="@+id/infoText2"
         android:layout_width="wrap_content"
@@ -184,5 +185,6 @@
         app:layout_constraintEnd_toEndOf="@+id/loginButton"
         app:layout_constraintStart_toStartOf="@+id/loginButton"
         app:layout_constraintTop_toBottomOf="@+id/loginButton" />
+    /!-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

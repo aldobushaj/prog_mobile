@@ -8,6 +8,14 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.mapbox.api.directions.v5.MapboxDirections;
+import com.mapbox.geojson.Point;
+import com.mapbox.maps.MapView;
+import com.mapbox.maps.Style;
+
+
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -22,12 +30,13 @@ public class BookActivity extends AppCompatActivity {
 
     TextView infoText, oreText, priceText;
     Button startBookButton;
+    MapView mapView;
 
     final Calendar myCalendar= Calendar.getInstance();
     EditText editText;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void  onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book);
         Car currentCar=  (Car) getIntent().getSerializableExtra("currentCar");
@@ -80,4 +89,5 @@ public class BookActivity extends AppCompatActivity {
         SimpleDateFormat dateFormat=new SimpleDateFormat(myFormat, Locale.US);
         editText.setText(dateFormat.format(myCalendar.getTime()));
     }
+
 }
