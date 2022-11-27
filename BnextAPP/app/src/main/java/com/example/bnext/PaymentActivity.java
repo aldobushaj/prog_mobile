@@ -23,7 +23,7 @@ public class PaymentActivity extends AppCompatActivity {
         Car currentCar=  (Car) getIntent().getSerializableExtra("currentCar");
         User currentUser=  (User) getIntent().getSerializableExtra("currentUser");
 
-        totalText = findViewById(R.id.totalText);
+        totalText = findViewById(R.id.textReservation);
         endTripButton = findViewById(R.id.endTripButton);
         feedbackButton = findViewById(R.id.feedbackButton);
 

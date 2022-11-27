@@ -4,108 +4,204 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:textAlignment="center"
     tools:context=".BookActivity">
 
-    <Button
-        android:id="@+id/feedbackButton"
-        android:layout_width="194dp"
-        android:layout_height="49dp"
-        android:layout_marginBottom="48dp"
-        android:backgroundTint="#1DA81D"
-        android:text="@string/start_booking_en"
-        app:cornerRadius="18dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/priceText"
-        app:layout_constraintHorizontal_bias="0.504"
-        app:layout_constraintStart_toStartOf="@+id/priceText"
-
-        />
-
-    <View
-        android:id="@+id/divider2"
-        android:layout_width="409dp"
-        android:layout_height="1dp"
-        android:background="?android:attr/listDivider"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/totalText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:text="@string/il_veicolo_arriver_alle_it"
+        android:id="@+id/nameOfCar"
+        android:layout_width="301dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="16dp"
+        android:capitalize="characters"
+        android:text="Tesla Model Y"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:typeface="serif"
+        app:layout_constraintBottom_toTopOf="@+id/dividerReservation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider2" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
-    <TextView
-        android:id="@+id/oreText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="@+id/totalText"
-        app:layout_constraintStart_toStartOf="@+id/totalText"
-        app:layout_constraintTop_toBottomOf="@+id/totalText" />
+    <ImageView
+        android:id="@+id/carImageReservation"
+        android:layout_width="219dp"
+        android:layout_height="138dp"
+        app:layout_constraintBottom_toTopOf="@+id/dividerReservation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.916"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nameOfCar"
+        app:srcCompat="@drawable/tesla_model_x" />
 
     <TextView
         android:id="@+id/priceText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="232dp"
         android:text="@string/price_hour_en"
-        app:layout_constraintBottom_toTopOf="@+id/feedbackButton"
-        app:layout_constraintEnd_toEndOf="@+id/oreText"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/oreText" />
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="384dp"
-        android:layout_height="381dp"
-        app:layout_constraintBottom_toTopOf="@+id/divider2"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/carImageReservation"
+        app:layout_constraintEnd_toStartOf="@+id/carImageReservation"
+        app:layout_constraintHorizontal_bias="0.247"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/daynight_map" />
+        app:layout_constraintTop_toTopOf="@+id/carImageReservation"
+        app:layout_constraintVertical_bias="0.327" />
 
-    <EditText
-        android:id="@+id/editTextTime"
+    <TextView
+        android:id="@+id/oreText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="136dp"
-        android:ems="10"
-        android:inputType="time"
+        android:layout_marginTop="20dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/carImageReservation"
+        app:layout_constraintEnd_toEndOf="@+id/priceText"
+        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintStart_toStartOf="@+id/priceText"
+        app:layout_constraintTop_toBottomOf="@+id/priceText"
+        app:layout_constraintVertical_bias="0.067" />
+
+    <View
+        android:id="@+id/dividerReservation"
+        android:layout_width="409dp"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider2" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.297" />
 
+    <TextView
+        android:id="@+id/textReservation"
+        android:layout_width="369dp"
+        android:layout_height="45dp"
+        android:gravity="center_horizontal"
+        android:text="@string/intervallo_prenotaione"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:typeface="serif"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/dividerReservation"
+        app:layout_constraintVertical_bias="0.072" />
 
-    <EditText
-        android:id="@+id/Birthday"
-        android:layout_width="234dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="52dp"
-        android:clickable="false"
-        android:cursorVisible="false"
-        android:focusable="false"
-        android:focusableInTouchMode="false"
-        android:hint="birthday"
+    <LinearLayout
+        android:id="@+id/left"
+        android:layout_width="200dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="23dp"
+        android:gravity="center"
+        android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/feedbackButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textReservation"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:id="@+id/startReservation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Start Reservation"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:visibility="visible" />
+
+        <EditText
+            android:id="@+id/hourStart"
+            android:layout_width="130dp"
+            android:layout_height="50dp"
+
+            android:layout_marginTop="60dp"
+            android:layout_marginBottom="20dp"
+            android:clickable="false"
+            android:cursorVisible="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:hint="type hour here" />
+
+        <EditText
+            android:id="@+id/dateStart"
+            android:layout_width="130dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:clickable="false"
+            android:cursorVisible="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:hint="type date here" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/right"
+        android:layout_width="200dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="23dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/feedbackButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textReservation"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:id="@+id/endReservation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="End Reservation"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/hourEnd"
+            android:layout_width="130dp"
+            android:layout_height="50dp"
+
+            android:layout_marginTop="60dp"
+            android:layout_marginBottom="20dp"
+            android:clickable="false"
+            android:cursorVisible="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:hint="type hour here"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/dateEnd"
+            android:layout_width="130dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:clickable="false"
+            android:cursorVisible="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:hint="type date here" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/feedbackButton"
+        android:layout_width="194dp"
+        android:layout_height="49dp"
+        android:backgroundTint="#1DA81D"
+        android:text="@string/start_booking_en"
+        app:cornerRadius="18dp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTime" />
+        app:layout_constraintTop_toBottomOf="@+id/dividerReservation"
+        app:layout_constraintVertical_bias="0.937" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/pick_time"
-        android:onClick="showTimePickerDialog" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
