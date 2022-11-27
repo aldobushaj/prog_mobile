@@ -10,7 +10,7 @@
 
     <string name="start_booking_en">Start Booking</string>
     <string name="price_hour_en">Price / Hour</string>
-    <string name="il_veicolo_arriver_alle_it">Inserire intervallo di tempo della prenotazione</string>
+    <string name="intervallo_prenotaione">Intervallo di tempo prenotazione</string>
     <string name="leave_a_feedback_en">Leave a Feedback!</string>
     <string name="end_trip_and_pay_en">End trip and Pay</string>
 

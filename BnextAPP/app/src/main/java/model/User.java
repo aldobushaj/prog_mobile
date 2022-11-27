@@ -95,6 +95,10 @@ public class User implements Serializable {
 
     public User(){};
 
+    public User(UUID userId) {
+        this.userId =  userId;
+    }
+
     public UUID getUserId() {
         return userId;
     }
