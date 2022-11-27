@@ -69,7 +69,7 @@ public class BookRide extends AppCompatActivity {
         // ---- assign values to each control of the layout----
         //Buttons
         SearchRideButton = findViewById(R.id.SearchRideButton);
-        BookRideButton = findViewById(R.id.bookRideButton);
+        //BookRideButton = findViewById(R.id.bookRideButton);
 
         // Text Views
         UserNameTextView = findViewById(R.id.UserNameTextView);
@@ -78,8 +78,8 @@ public class BookRide extends AppCompatActivity {
 
         // Edit Text
 
-        PriceKmEditText = findViewById(R.id.PriceKmEditText);
-        DestinationEditText = findViewById(R.id.DestinationEditText);
+        //PriceKmEditText = findViewById(R.id.PriceKmEditText);
+        //DestinationEditText = findViewById(R.id.DestinationEditText);
         DateChooseEditText = findViewById(R.id.DateChooseEditText);
         TimeChooseEditText = findViewById(R.id.TimeChooseEditText);
 
@@ -201,20 +201,16 @@ public class BookRide extends AppCompatActivity {
             view.getContext().startActivity(intent);
 
         });
-
+        /*
         BookRideButton.setOnClickListener(view -> {
-            /* Per ora va direttamente,
-            dopo va fatto che si procede a quella dopo
-            selezionando una macchina e passando all'activity
-            seguente le informazioni
-            * */
+
             Intent intent = new Intent(view.getContext(), BookActivity.class);
             // Quindi posso passare il token di autenticazione all'altra activity
             //intent.putExtra("token", token);
             intent.putExtra("currentUser",currentUser);
             view.getContext().startActivity(intent);
 
-        });
+        });*/
 
 
 

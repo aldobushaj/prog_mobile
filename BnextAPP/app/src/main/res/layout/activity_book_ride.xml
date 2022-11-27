@@ -16,26 +16,12 @@
         app:cornerRadius="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.945"
+        app:layout_constraintHorizontal_bias="0.925"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.588"
+        app:layout_constraintVertical_bias="0.488"
         app:rippleColor="#FF7043"
         app:strokeColor="#ff7043" />
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/PriceKmEditText"
-        android:layout_width="312dp"
-        android:layout_height="39dp"
-        android:hint="10"
-        android:textColor="#232323"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/bookRideButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.292"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.309" />
 
     <TextView
         android:id="@+id/UserNameTextView"
@@ -45,12 +31,12 @@
         android:textColor="#232323"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/SpesaTextView"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/userAvatar"
-        app:layout_constraintHorizontal_bias="0.519"
+        app:layout_constraintHorizontal_bias="0.376"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.395" />
+        app:layout_constraintVertical_bias="0.05" />
 
     <ImageView
         android:id="@+id/userAvatar"
@@ -66,33 +52,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.051" />
 
-    <TextView
-        android:id="@+id/SpesaTextView"
-        android:layout_width="267dp"
-        android:layout_height="31dp"
-        android:text="@string/price_km_text_it"
-        android:textColor="#2196F3"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/bookRideButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.201"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.262" />
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/DestinationEditText"
-        android:layout_width="311dp"
-        android:layout_height="39dp"
-        android:hint="Piazza Castello, Torino"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.29"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.403" />
-
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/TimeChooseEditText"
         android:layout_width="102dp"
@@ -102,8 +61,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.093"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.597" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/spesaTextView4"
@@ -117,7 +75,7 @@
         app:layout_constraintHorizontal_bias="0.091"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.544" />
+        app:layout_constraintVertical_bias="0.448" />
 
     <TextView
         android:id="@+id/spesaTextView3"
@@ -131,7 +89,7 @@
         app:layout_constraintHorizontal_bias="0.128"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.451" />
+        app:layout_constraintVertical_bias="0.321" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/DateChooseEditText"
@@ -142,46 +100,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.114"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/spesaTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/price_km_text_it"
-        android:textColor="#2196F3"
-        android:textSize="20sp"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="@+id/bookRideButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.189"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.36" />
+        app:layout_constraintVertical_bias="0.384" />
 
     <ListView
         android:id="@+id/AvaiableCarsListView"
-        android:layout_width="372dp"
-        android:layout_height="166dp"
+        android:layout_width="375dp"
+        android:layout_height="318dp"
         android:backgroundTint="#FFFFFF"
-        app:layout_constraintBottom_toTopOf="@+id/bookRideButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.589"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.95" />
-
-    <Button
-        android:id="@+id/bookRideButton"
-        android:layout_width="225dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="4dp"
-        android:backgroundTint="#FF5722"
-        android:text="@string/book_now_button_en"
-        app:cornerRadius="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.405"
         app:layout_constraintStart_toStartOf="parent"
-        app:strokeColor="#673AB7" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.971" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
