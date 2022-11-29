@@ -181,7 +181,6 @@ public class ExampleUnitTest {
         testReservation.setUser(testUser);
         Position startPosition = new Position(123.00,123.00);
         testReservation.setStartPosition(startPosition);
-
         assertEquals(startPosition.toString(),testReservation.getStartPosition().toString());
     }
 }
