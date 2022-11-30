@@ -20,7 +20,7 @@ import model.User;
 
 public class UserDetailsActivity extends AppCompatActivity {
     String token = "";
-    Button UpdateUserDetailsButton, BookRideButton;
+    Button UpdateUserDetailsButton, ArchiveButton;
     TextView UserNameTextView;
     EditText UsernameEditText, EmailEditText;
     ListView AvailableCarsListView;
@@ -36,6 +36,7 @@ public class UserDetailsActivity extends AppCompatActivity {
         // ---- assign values to each control of the layout----
         //Buttons
         UpdateUserDetailsButton = findViewById(R.id.homeUserDetailsButton);
+        ArchiveButton = findViewById(R.id.UserDetailsArchive);
         // Edit Text
         UsernameEditText = findViewById(R.id.usernameEditText);
         EmailEditText = findViewById(R.id.emailEditText);
@@ -90,6 +91,16 @@ public class UserDetailsActivity extends AppCompatActivity {
                             System.out.println(anError);
                         }
                     });
+
+        });
+
+
+        ArchiveButton.setOnClickListener(view -> {
+
+            Intent intent = new Intent(view.getContext(), ArchiveActivity.class);
+            intent.putExtra("user", currentUser);
+            //intent.putExtra("currentCar",currentCar);
+            view.getContext().startActivity(intent);
 
         });
 
