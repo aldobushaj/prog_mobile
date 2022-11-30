@@ -29,6 +29,6 @@ dependencyResolutionManagement {
 
     }
 }
-rootProject.name = "WeatherAPIApp"
+rootProject.name = "B-NextApp"
 include ':app'
 include ':app:test'
