@@ -17,8 +17,8 @@
 
     <Button
         android:id="@+id/ReservationDetailsHomeButton"
-        android:layout_width="204dp"
-        android:layout_height="53dp"
+        android:layout_width="315dp"
+        android:layout_height="74dp"
         android:layout_marginBottom="180dp"
         android:backgroundTint="@color/arancione"
         android:text="HOME"
@@ -79,8 +79,8 @@
 
     <Button
         android:id="@+id/ReservationDetailsDeleteButton"
-        android:layout_width="204dp"
-        android:layout_height="53dp"
+        android:layout_width="315dp"
+        android:layout_height="74dp"
         android:layout_marginBottom="312dp"
         android:backgroundTint="@color/rosso_delete"
         android:text="@string/delete"
