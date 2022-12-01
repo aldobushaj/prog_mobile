@@ -84,7 +84,7 @@ public class CustomReservationAdapter extends ArrayAdapter<Reservation> {
         currentItemView.setOnClickListener(view -> {
             Intent intent = new Intent(view.getContext(), ReservationDetails.class);
             intent.putExtra("user", user);
-            intent.putExtra("currentCar",currentReservation);
+            intent.putExtra("currentReservation",currentReservation);
             view.getContext().startActivity(intent);
         });
         return currentItemView;
