@@ -7,4 +7,15 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="rosso_delete">#f85f6a</color>
+
+    <color name="blu_facebook">#007aff</color>
+
+    <color name="arancione">#ff7043</color>
+
+    <color name="verde">#72bb53</color>
+
+
+
 </resources>

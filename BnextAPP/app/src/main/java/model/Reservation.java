@@ -8,7 +8,6 @@ import java.util.UUID;
 public class Reservation implements Serializable {
 
     private UUID reservationId;
-
     private Date startOfBook;
     private Date endOfBook;
     private User user;

@@ -29,7 +29,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.sql.Time;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -90,7 +89,7 @@ public class BookRide extends AppCompatActivity {
         TimeChooseEditText.setText(parts[1]);
 
         // List View
-        AvailableCarsListView = findViewById(R.id.AvaiableCarsListView);
+        AvailableCarsListView = findViewById(R.id.ReservationListView);
 
 
         // Image Buttons

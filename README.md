@@ -3,3 +3,8 @@
 Aldo Bushaj
 Antonino Bushai
 Silvestro Stefano Frisullo
+
+
+#Test
+
+location is at prog_mobile/BnextAPP/app/build/reports/tests/testDebugUnitTest/index.html
