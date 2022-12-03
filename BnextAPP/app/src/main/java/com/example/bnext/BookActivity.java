@@ -63,12 +63,12 @@ public class BookActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book);
-        /*
-        Car currentCar=  (Car) getIntent().getSerializableExtra("currentCar");
-        User currentUser=  (User) getIntent().getSerializableExtra("currentUser");*/
 
+        currentCar=  (Car) getIntent().getSerializableExtra("currentCar");
+        currentUser=  (User) getIntent().getSerializableExtra("currentUser");
+/*
         currentCar= new Car(UUID.fromString("19658da5-f573-4c7d-931d-15cd80dc676d"));
-        currentUser = new User(UUID.fromString("67f65c6a-4627-4449-b4f5-beb14f0c4139"));
+        currentUser = new User(UUID.fromString("67f65c6a-4627-4449-b4f5-beb14f0c4139"));*/
 
         nameOfCar = findViewById(R.id.nameOfCar);
         priceText = findViewById(R.id.priceText);

@@ -50,12 +50,12 @@ public class ExampleUnitTest {
         User userTest = new User(userUUID,"username");
 
         String sDate1="31/12/1998";
-        try {
+        /*try {
             Date date1=new SimpleDateFormat("dd/MM/yyyy").parse(sDate1);
             userTest.setBirthDate(date1);
         } catch (ParseException e) {
             e.printStackTrace();
-        }
+        }*/
         userTest.setFeedbacks(new ArrayList<Feedback>());
         userTest.setName("TestName");
         userTest.setOwnedCars(new ArrayList<Car>());

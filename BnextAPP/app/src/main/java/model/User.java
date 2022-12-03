@@ -17,7 +17,7 @@ public class User implements Serializable {
     private UUID userId;
     private String name;
     private String surname;
-    private Date birthDate;
+    private String birthDate;
     private String username;
     private String password;
     private int active;
@@ -28,7 +28,7 @@ public class User implements Serializable {
     private List<Reservation> reservations = new ArrayList<>();
     private List<Feedback> feedbacks = new ArrayList<>();
 
-    public User(UUID userId, String name, String surname, Date birthDate, String username, String password, int active, String permissions, String roles, List<Car> ownedCars, List<Reservation> reservations, List<Feedback> feedbacks) {
+    public User(UUID userId, String name, String surname, String birthDate, String username, String password, int active, String permissions, String roles, List<Car> ownedCars, List<Reservation> reservations, List<Feedback> feedbacks) {
         /*
         * Complete constructor
         * */
@@ -46,7 +46,7 @@ public class User implements Serializable {
         this.feedbacks = feedbacks;
     }
 
-    public User(UUID userId, String name, String surname, Date birthDate, String username, String password, int active, String permissions, String roles) {
+    public User(UUID userId, String name, String surname, String birthDate, String username, String password, int active, String permissions, String roles) {
         this.userId = userId;
         this.name = name;
         this.surname = surname;
@@ -80,7 +80,7 @@ public class User implements Serializable {
         this.userId = UUID.fromString(user.get("userId").toString());
         this.name = user.get("name").toString();
         this.surname = user.get("surname").toString();
-        this.birthDate = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss.sssZ").parse(user.get("birthDate").toString());
+        this.birthDate = user.get("birthDate").toString();//new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss.sssZ").parse(user.get("birthDate").toString());
         this.username = user.get("username").toString();
         this.password = user.get("password").toString();
         this.active = (int) user.get("active");
@@ -123,11 +123,11 @@ public class User implements Serializable {
         this.surname = surname;
     }
 
-    public Date getBirthDate() {
+    public String getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(Date birthDate) {
+    public void setBirthDate(String birthDate) {
         this.birthDate = birthDate;
     }
 

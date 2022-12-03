@@ -78,7 +78,8 @@ public class MainActivity extends AppCompatActivity {
                                 try {
                                     token = (String) response.get("token");
                                     Gson gson  = new GsonBuilder()
-                                            .setDateFormat("yyyy-MM-dd'T'HH:mm:ss")
+                                            //.setDateFormat("yyyy-MM-dd'T'HH:mm:ss")
+                                            //.setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSX")
                                             .create();
                                     currentUser = gson.fromJson(response.get("user").toString(), User.class); // deserializes json into target2
                                     //System.out.println("####################################\n"+currentUser.toString());
