@@ -33,7 +33,7 @@ public class Position implements Serializable {
     public Position(Double latitude, Double longitude) {
         this.latitude = latitude;
         this.longitude = longitude;
-        this.id = UUID.randomUUID();
+        //this.id = UUID.randomUUID();
     }
 
     public UUID getId() {

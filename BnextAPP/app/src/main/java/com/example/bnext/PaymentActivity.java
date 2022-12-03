@@ -25,7 +25,7 @@ public class PaymentActivity extends AppCompatActivity {
 
         totalText = findViewById(R.id.textReservation);
         endTripButton = findViewById(R.id.endTripButton);
-        feedbackButton = findViewById(R.id.feedbackButton);
+        feedbackButton = findViewById(R.id.bookButton);
 
 
 

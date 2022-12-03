@@ -16,13 +16,13 @@
         android:backgroundTint="#058005"
         android:text="@string/end_trip_and_pay_en"
         app:cornerRadius="18dp"
-        app:layout_constraintBottom_toTopOf="@+id/feedbackButton"
+        app:layout_constraintBottom_toTopOf="@+id/bookButton"
         app:layout_constraintEnd_toEndOf="@+id/textReservation"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/textReservation" />
 
     <Button
-        android:id="@+id/feedbackButton"
+        android:id="@+id/bookButton"
         android:layout_width="194dp"
         android:layout_height="49dp"
         android:layout_marginBottom="56dp"
