@@ -75,18 +75,13 @@ public class StatsCarActivity extends AppCompatActivity {
         // modify text
         carName.setText(currentCar.getName());
         carPlateNumber.setText("Plate number: " + currentCar.getPlateNumber());
-        priceKM.append("5€");
-        priceHour.append("50€");
+        priceKM.append(currentCar.getPriceKm().toString());
+        priceHour.append(currentCar.getPriceHour().toString());
 
 
-        // ------------------------------------- DA SISTEMARE --------------------------------------------------
-        // questo prenderà il valore che passiamo dall'activity Home/BookRide sia per l'user che per la macchina
-        //carID = "991f9af1-bed7-4911-b46c-6ac88080e046";
         carID = String.valueOf(currentCar.getCarId());
         //System.out.println(currentCar);
         userID= String.valueOf(currentUser.getUserId());
-        //userID = "579d6ff5-487b-43eb-9cb8-3279703c41cd";
-        // -----------------------------------------------------------------------------------------------------
 
         // Populate the UI with Fast Android Networking Library
         AndroidNetworking.initialize(getApplicationContext());

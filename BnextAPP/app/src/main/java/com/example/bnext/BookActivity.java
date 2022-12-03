@@ -5,14 +5,12 @@ import static com.example.bnext.MainActivity.url;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -26,7 +24,6 @@ import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONArrayRequestListener;
 import com.androidnetworking.interfaces.StringRequestListener;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -35,16 +32,12 @@ import org.json.JSONObject;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.Instant;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
-import java.util.Random;
-import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
 
 import model.Car;
-import model.Feedback;
 import model.Position;
 import model.User;
 
@@ -54,7 +47,6 @@ public class BookActivity extends AppCompatActivity {
     EditText hourStart, dateStart, hourEnd, dateEnd;
     Button bookButton;
     final Calendar myCalendar= Calendar.getInstance();
-    String token = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwcm92YSIsImlhdCI6MTY3MDA2MzIzOSwiZXhwIjoxNjcwMDgxMjM5fQ.nNCP0MkNMjKvHlce2Qvqc4nSB7hPtd6JMYPtJalqB0Ezsrm__xfE1dfKY15OFgdh_O88kx41O4hfxz8RMypRWw";
     String myFormat="yyyy/MM/dd";
     Car currentCar;
     User currentUser;
@@ -70,16 +62,16 @@ public class BookActivity extends AppCompatActivity {
         currentCar= new Car(UUID.fromString("19658da5-f573-4c7d-931d-15cd80dc676d"));
         currentUser = new User(UUID.fromString("67f65c6a-4627-4449-b4f5-beb14f0c4139"));*/
 
-        nameOfCar = findViewById(R.id.nameOfCar);
+        nameOfCar = findViewById(R.id.titlePayament);
         priceText = findViewById(R.id.priceText);
         oreText = findViewById(R.id.oreText);
-        textReservation = findViewById(R.id.textReservation);
-        startReservation= findViewById(R.id.startReservation);
-        endReservation= findViewById(R.id.endReservation);
-        dateStart = findViewById(R.id.dateStart);
-        hourStart = findViewById(R.id.hourStart);
-        dateEnd = findViewById(R.id.dateEnd);
-        hourEnd = findViewById(R.id.hourEnd);
+        textReservation = findViewById(R.id.resumePayament);
+        startReservation= findViewById(R.id.startBooking);
+        endReservation= findViewById(R.id.endBooking);
+        dateStart = findViewById(R.id.dateStartPayment);
+        hourStart = findViewById(R.id.hourStartPayment);
+        dateEnd = findViewById(R.id.dateEndPayment);
+        hourEnd = findViewById(R.id.hourEndPayment);
         bookButton = findViewById(R.id.bookButton);
 
         getSupportActionBar().setTitle("Reservation");
@@ -396,9 +388,9 @@ public class BookActivity extends AppCompatActivity {
                     public void onResponse(String s) {
 
                         // Qua cosa   fare se la richiesta funziona
-                        Log.d("Reservation", jsonObject.toString());
-                        Toast.makeText(BookActivity.this, "Reservation added SUCESFULLY!", Toast.LENGTH_SHORT).show();
-
+                        //Log.d("Reservation", jsonObject.toString());
+                        //Toast.makeText(BookActivity.this, "Reservation added SUCESFULLY!", Toast.LENGTH_SHORT).show();
+                        Log.d("OK!!", "Reservation added SUCESFULLY!");
 
                         // La prenotazione è stata aggiunta con successo, posso passare quindi alla prossima activity
                         Intent intent = new Intent(BookActivity.this, PaymentActivity.class);
@@ -406,6 +398,8 @@ public class BookActivity extends AppCompatActivity {
                         //intent.putExtra("token", token);
                         intent.putExtra("currentUser", currentUser);
                         intent.putExtra("currentCar", currentCar);
+                        intent.putExtra("startOfBook", startOfBook);
+                        intent.putExtra("endOfBook", endOfBook);
                         BookActivity.this.startActivity(intent);
 
                     }

@@ -1,5 +1,7 @@
 package com.example.bnext;
 
+import static com.example.bnext.MainActivity.token;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,7 +21,7 @@ import com.androidnetworking.interfaces.StringRequestListener;
 import model.User;
 
 public class UserDetailsActivity extends AppCompatActivity {
-    String token = "";
+
     Button UpdateUserDetailsButton, ArchiveButton;
     TextView UserNameTextView;
     EditText UsernameEditText, EmailEditText;
@@ -30,9 +32,6 @@ public class UserDetailsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_details);
-        // Recupero il token ottenuto dalla pagina di login
-        Bundle bundle = getIntent().getExtras();
-        token = bundle.getString("token");
         // ---- assign values to each control of the layout----
         //Buttons
         UpdateUserDetailsButton = findViewById(R.id.homeUserDetailsButton);

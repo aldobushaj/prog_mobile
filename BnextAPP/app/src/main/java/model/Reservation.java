@@ -1,15 +1,14 @@
 package model;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.UUID;
 
 
 public class Reservation implements Serializable {
 
     private UUID reservationId;
-    private Date startOfBook;
-    private Date endOfBook;
+    private String startOfBook;
+    private String endOfBook;
     private User user;
     private Car car;
     private Position destination;
@@ -19,7 +18,7 @@ public class Reservation implements Serializable {
         this.reservationId = reservationId;
     }
 
-    public Reservation(UUID reservationId, Date startOfBook, Date endOfBook, User user, Car car, Position destination, Position startPosition) {
+    public Reservation(UUID reservationId, String startOfBook, String endOfBook, User user, Car car, Position destination, Position startPosition) {
         /*
         * Provide reservation ID
         * */
@@ -31,7 +30,7 @@ public class Reservation implements Serializable {
         this.startPosition = startPosition;
         this.reservationId= reservationId;
     }
-    public Reservation( Date startOfBook, Date endOfBook, User user, Car car, Position destination, Position startPosition) {
+    public Reservation(String startOfBook, String endOfBook, User user, Car car, Position destination, Position startPosition) {
         /*
         * No need to provide ID
         * */
@@ -52,19 +51,19 @@ public class Reservation implements Serializable {
         this.reservationId = reservationId;
     }
 
-    public Date getStartOfBook() {
+    public String getStartOfBook() {
         return startOfBook;
     }
 
-    public void setStartOfBook(Date startOfBook) {
+    public void setStartOfBook(String startOfBook) {
         this.startOfBook = startOfBook;
     }
 
-    public Date getEndOfBook() {
+    public String getEndOfBook() {
         return endOfBook;
     }
 
-    public void setEndOfBook(Date endOfBook) {
+    public void setEndOfBook(String endOfBook) {
         this.endOfBook = endOfBook;
     }
 

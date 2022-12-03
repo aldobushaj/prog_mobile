@@ -26,8 +26,6 @@ import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 
-import model.Car;
-import model.Feedback;
 import model.User;
 import model.Reservation;
 

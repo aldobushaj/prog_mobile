@@ -9,7 +9,7 @@
 
 
     <TextView
-        android:id="@+id/nameOfCar"
+        android:id="@+id/titlePayament"
         android:layout_width="301dp"
         android:layout_height="39dp"
         android:layout_marginTop="16dp"
@@ -19,7 +19,7 @@
         android:textAlignment="center"
         android:textSize="24sp"
         android:typeface="serif"
-        app:layout_constraintBottom_toTopOf="@+id/dividerReservation"
+        app:layout_constraintBottom_toTopOf="@+id/dividerPayment"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,11 +30,11 @@
         android:id="@+id/carImageReservation"
         android:layout_width="219dp"
         android:layout_height="138dp"
-        app:layout_constraintBottom_toTopOf="@+id/dividerReservation"
+        app:layout_constraintBottom_toTopOf="@+id/dividerPayment"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.916"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nameOfCar"
+        app:layout_constraintTop_toBottomOf="@+id/titlePayament"
         app:srcCompat="@drawable/tesla_model_x" />
 
     <TextView
@@ -63,7 +63,7 @@
         app:layout_constraintVertical_bias="0.067" />
 
     <View
-        android:id="@+id/dividerReservation"
+        android:id="@+id/dividerPayment"
         android:layout_width="409dp"
         android:layout_height="1dp"
         android:background="?android:attr/listDivider"
@@ -75,7 +75,7 @@
         app:layout_constraintVertical_bias="0.297" />
 
     <TextView
-        android:id="@+id/textReservation"
+        android:id="@+id/resumePayament"
         android:layout_width="369dp"
         android:layout_height="45dp"
         android:fontFamily="sans-serif-black"
@@ -88,11 +88,11 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/dividerReservation"
+        app:layout_constraintTop_toTopOf="@+id/dividerPayment"
         app:layout_constraintVertical_bias="0.072" />
 
     <LinearLayout
-        android:id="@+id/left"
+        android:id="@+id/leftPayment"
         android:layout_width="200dp"
         android:layout_height="300dp"
         android:layout_marginTop="15dp"
@@ -103,11 +103,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textReservation"
+        app:layout_constraintTop_toBottomOf="@+id/resumePayament"
         app:layout_constraintVertical_bias="0.0">
 
         <TextView
-            android:id="@+id/startReservation"
+            android:id="@+id/startBooking"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Start Reservation"
@@ -116,7 +116,7 @@
             android:visibility="visible" />
 
         <EditText
-            android:id="@+id/dateStart"
+            android:id="@+id/dateStartPayment"
             android:layout_width="130dp"
             android:layout_height="50dp"
             android:layout_marginTop="60dp"
@@ -127,7 +127,7 @@
             android:hint="type date here" />
 
         <EditText
-            android:id="@+id/hourStart"
+            android:id="@+id/hourStartPayment"
             android:layout_width="130dp"
             android:layout_height="50dp"
 
@@ -142,7 +142,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/right"
+        android:id="@+id/rightPayment"
         android:layout_width="200dp"
         android:layout_height="300dp"
         android:layout_marginTop="15dp"
@@ -153,11 +153,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textReservation"
+        app:layout_constraintTop_toBottomOf="@+id/resumePayament"
         app:layout_constraintVertical_bias="0.0">
 
         <TextView
-            android:id="@+id/endReservation"
+            android:id="@+id/endBooking"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="End Reservation"
@@ -165,7 +165,7 @@
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/dateEnd"
+            android:id="@+id/dateEndPayment"
             android:layout_width="133dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="60dp"
@@ -176,7 +176,7 @@
             android:hint="type date here" />
 
         <EditText
-            android:id="@+id/hourEnd"
+            android:id="@+id/hourEndPayment"
             android:layout_width="130dp"
             android:layout_height="50dp"
 
@@ -203,7 +203,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dividerReservation"
+        app:layout_constraintTop_toBottomOf="@+id/dividerPayment"
         app:layout_constraintVertical_bias="0.937" />
 
 
