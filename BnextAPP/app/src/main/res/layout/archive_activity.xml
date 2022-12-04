@@ -20,7 +20,7 @@
         android:layout_width="356dp"
         android:layout_height="65dp"
         android:layout_marginStart="24dp"
-        android:text="Le mie prenotazioni"
+        android:text="@string/my_reservations_en"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textColor="#232323"
         android:textSize="34sp"

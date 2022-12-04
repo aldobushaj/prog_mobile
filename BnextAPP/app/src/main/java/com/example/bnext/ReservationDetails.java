@@ -82,7 +82,7 @@ public class ReservationDetails extends AppCompatActivity {
         }
         Log.d("Reservation Details","loaded activity reservation: " + currentReservation.toString());
 
-
+        /*
         SimpleDateFormat sdf = new SimpleDateFormat("EE MMM dd HH:mm:ss yyyy",
                 Locale.ENGLISH);
         Date date = null;
@@ -108,6 +108,13 @@ public class ReservationDetails extends AppCompatActivity {
             Log.e("Error parsing date",currentReservation.getStartOfBook().toString());
             e.printStackTrace();
         }
+        */
+        String[] chunks = currentReservation.getStartOfBook().split("T");
+        dateTextView.setText(chunks[0]);
+        //Imposto l'ora, eliminando i secondo che sono inutili
+        timeTextView.setText(chunks[1].substring(0, chunks[1].length() - 3));
+
+
         homeButton.setOnClickListener(view -> {
             Intent intent = new Intent(view.getContext(), BookRide.class);
             intent.putExtra("currentUser", currentUser);

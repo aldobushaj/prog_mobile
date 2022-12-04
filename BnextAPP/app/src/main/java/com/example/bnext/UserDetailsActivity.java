@@ -24,7 +24,7 @@ public class UserDetailsActivity extends AppCompatActivity {
 
     Button UpdateUserDetailsButton, ArchiveButton;
     TextView UserNameTextView;
-    EditText UsernameEditText, EmailEditText;
+    EditText UsernameEditText, NameEditText;
     ListView AvailableCarsListView;
     User currentUser;
 
@@ -38,7 +38,7 @@ public class UserDetailsActivity extends AppCompatActivity {
         ArchiveButton = findViewById(R.id.UserDetailsArchive);
         // Edit Text
         UsernameEditText = findViewById(R.id.usernameEditText);
-        EmailEditText = findViewById(R.id.emailEditText);
+        NameEditText = findViewById(R.id.emailEditText);
         UserNameTextView = findViewById(R.id.userNameTextView);
         currentUser = (User) getIntent().getSerializableExtra("currentUser");
         Log.d("User BookRide", currentUser.toString());
@@ -52,10 +52,11 @@ public class UserDetailsActivity extends AppCompatActivity {
 
         );
         UsernameEditText.setText(currentUser.getUsername());
-
+        NameEditText.setText( currentUser.getName());
         UpdateUserDetailsButton.setOnClickListener(view -> {
 
             User updatedUser = new User(currentUser.getUserId(), UsernameEditText.getText().toString());
+            updatedUser.setName(NameEditText.getText().toString());
             AndroidNetworking.initialize(getApplicationContext());
             // pipedream https://eo36hxzz25l7d4r.m.pipedream.net
             AndroidNetworking.put("http://10.0.2.2:8080/user/update")

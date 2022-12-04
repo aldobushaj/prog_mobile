@@ -100,8 +100,9 @@ public class PaymentActivity extends AppCompatActivity {
         }
 
         // calcolo il numero di ore tra le due date
-        long numberOfHours = startDate.getTime() - endDate.getTime();
-
+        assert endDate != null;
+        long numberOfHours =  ( startDate.getTime() -endDate.getTime() ) / (60*60*1000) ;
+        Log.d("Payment", "S " + startDate.getTime()+ " E "+ endDate.getTime() + "Number of hours: " + numberOfHours);
         return numberOfHours;
     }
 }

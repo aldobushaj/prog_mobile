@@ -81,7 +81,7 @@
         android:fontFamily="sans-serif-black"
         android:freezesText="false"
         android:gravity="center_horizontal"
-        android:text="@string/intervallo_prenotaione"
+        android:text="@string/booking_duration"
         android:textSize="16sp"
         android:textStyle="bold"
         android:typeface="serif"

@@ -9,6 +9,11 @@
     <string name="delete">DELETE</string>
 
 
+    <string name="date_picker_text_en">When do you want to travel?</string>
+    <string name="time_picker_text_en">What time?</string>
+
+    <string name="my_reservations_en">My Reservations</string>
+
     <string name="feedback_button_en">Leave a Feedback!</string>
     <string name="price_hour_en">Price / Hour</string>
     <string name="riepilogo_prenotazione">Ecco i dettagli della tua prenotazione:</string>
@@ -41,4 +46,7 @@
     <string name="mapbox_access_token">pk.eyJ1Ijoic2lsdmlvZiIsImEiOiJjbDI1emRvOGcyZHJzM2JtdDJjam53NG1tIn0.Y6eP5eVbe20ailD6JExa_w</string>
     <string name="intervallo_prenotaione">Intervallo di tempo prenotazione</string>
     <string name="start_booking_en">Start Booking</string>
+
+    <string name="booking_duration">Booking duration</string>
+
 </resources>

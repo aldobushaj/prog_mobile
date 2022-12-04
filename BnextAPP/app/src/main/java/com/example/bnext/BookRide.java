@@ -35,7 +35,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Locale;
+import java.util.Set;
 
 import model.Car;
 import model.User;
@@ -49,8 +51,7 @@ public class BookRide extends AppCompatActivity {
     ImageView userAvatar;
     User currentUser;
 
-    // ArrayList che contiene la lista di oggetti Feedback appartenenti ad una macchina (macchina passata da un altra activity)
-    final ArrayList<Car> availableCars = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -106,7 +107,10 @@ public class BookRide extends AppCompatActivity {
                   "endOfBook": "2020-07-27T14:10:00"
                }
             * */
+            // ArrayList che contiene la lista di oggetti Feedback appartenenti ad una macchina (macchina passata da un altra activity)
+            final ArrayList<Car> availableCars = new ArrayList<>();
 
+            final Set<Car> availableCarsSet = new HashSet<>();
             DateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.ENGLISH);
             Date date = null;
             String DateToParseString = "";
@@ -162,6 +166,7 @@ public class BookRide extends AppCompatActivity {
 
 
                                     availableCars.add(foundCar);
+                                    availableCarsSet.add(foundCar);
 
                                 } catch (JSONException e) {
                                     e.printStackTrace();
@@ -172,11 +177,13 @@ public class BookRide extends AppCompatActivity {
                             // Now create the instance of the CustomViewAdapter and pass
                             // the context and arrayList created above
 
-
-                            CustomCarAdapter customViewAdapter = new CustomCarAdapter(BookRide.this, availableCars,currentUser);
+                            ArrayList<Car> tempList= new ArrayList<>();
+                            tempList.addAll(availableCarsSet);
+                            CustomCarAdapter customViewAdapter = new CustomCarAdapter(BookRide.this, tempList,currentUser);
 
                             // set the CustomViewAdapter for ListView
                             AvailableCarsListView.setAdapter(customViewAdapter);
+
 
                         }
 
@@ -216,4 +223,7 @@ public class BookRide extends AppCompatActivity {
 
 
     }
+
+
+
 }
