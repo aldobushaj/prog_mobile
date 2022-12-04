@@ -3,13 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <!-->
+    <!--
+>
     Per MapBox
     da warning ma per ora lo lascio
-    </!-->
+    </!
+    -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
@@ -23,6 +24,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WeatherAPIApp"
         tools:targetApi="31">
+        <activity
+            android:name=".FeedbackDetails"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".FeedbacksArchive"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity
             android:name=".ReservationDetails"
             android:exported="true">
@@ -73,18 +88,21 @@
             android:exported="true" />
         <activity
             android:name=".BookRide"
-            android:exported="true">
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
-            <!-->
+
+            <!--
+                >
                          Con questo intent_filter
                          dico che questa activity è
                          la principale e deve essere avviata dall'app
-                         </-->
+                         </
+            -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

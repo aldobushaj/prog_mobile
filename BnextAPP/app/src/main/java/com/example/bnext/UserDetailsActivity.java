@@ -22,7 +22,7 @@ import model.User;
 
 public class UserDetailsActivity extends AppCompatActivity {
 
-    Button UpdateUserDetailsButton, ArchiveButton;
+    Button UpdateUserDetailsButton, ArchiveButton, FeedbacksButton;
     TextView UserNameTextView;
     EditText UsernameEditText, NameEditText;
     ListView AvailableCarsListView;
@@ -36,6 +36,7 @@ public class UserDetailsActivity extends AppCompatActivity {
         //Buttons
         UpdateUserDetailsButton = findViewById(R.id.homeUserDetailsButton);
         ArchiveButton = findViewById(R.id.UserDetailsArchive);
+        FeedbacksButton = findViewById(R.id.FeedbackButtonUserDetails);
         // Edit Text
         UsernameEditText = findViewById(R.id.usernameEditText);
         NameEditText = findViewById(R.id.emailEditText);
@@ -98,6 +99,15 @@ public class UserDetailsActivity extends AppCompatActivity {
         ArchiveButton.setOnClickListener(view -> {
 
             Intent intent = new Intent(view.getContext(), ArchiveActivity.class);
+            intent.putExtra("user", currentUser);
+            //intent.putExtra("currentCar",currentCar);
+            view.getContext().startActivity(intent);
+
+        });
+
+        FeedbacksButton.setOnClickListener(view -> {
+
+            Intent intent = new Intent(view.getContext(), FeedbacksArchive.class);
             intent.putExtra("user", currentUser);
             //intent.putExtra("currentCar",currentCar);
             view.getContext().startActivity(intent);

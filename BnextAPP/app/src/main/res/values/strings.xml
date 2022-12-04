@@ -13,6 +13,8 @@
     <string name="time_picker_text_en">What time?</string>
 
     <string name="my_reservations_en">My Reservations</string>
+    <string name="my_feedbacks_en">My Feedbacks</string>
+
 
     <string name="feedback_button_en">Leave a Feedback!</string>
     <string name="price_hour_en">Price / Hour</string>
@@ -29,7 +31,6 @@
     <string name="email">mario.rossi@mail.com</string>
 
 
-
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
     <string name="action_sign_in_short">Sign in</string>
@@ -37,7 +38,6 @@
     <string name="action_sign_up">SIGNUP</string>
     <string name="add_feedback">Add Feedback</string>
     <string name="pick_time" />
-
 
 
     <!-- ->

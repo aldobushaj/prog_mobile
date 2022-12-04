@@ -104,7 +104,7 @@
         app:layout_constraintVertical_bias="0.384" />
 
     <ListView
-        android:id="@+id/ReservationListView"
+        android:id="@+id/ReservationsListView"
         android:layout_width="375dp"
         android:layout_height="318dp"
         android:backgroundTint="#FFFFFF"

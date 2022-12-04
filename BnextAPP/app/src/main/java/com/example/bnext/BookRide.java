@@ -90,7 +90,7 @@ public class BookRide extends AppCompatActivity {
         TimeChooseEditText.setText(parts[1]);
 
         // List View
-        AvailableCarsListView = findViewById(R.id.ReservationListView);
+        AvailableCarsListView = findViewById(R.id.ReservationsListView);
 
 
         // Image Buttons

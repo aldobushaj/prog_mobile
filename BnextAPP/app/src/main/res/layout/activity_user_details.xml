@@ -6,46 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".UserDetailsActivity">
 
-    <Button
-        android:id="@+id/UserDetailsArchive"
-        android:layout_width="225dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="60dp"
-        android:backgroundTint="#007aff"
-        android:text="Archive"
-        app:cornerRadius="18dp"
+    <ImageView
+        android:id="@+id/userAvatarDetails"
+        android:layout_width="153dp"
+        android:layout_height="146dp"
+        android:contentDescription="user avatar"
+        android:src="@drawable/avatar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:strokeColor="#673AB7" />
-
-    <Button
-        android:id="@+id/homeUserDetailsButton"
-        android:layout_width="225dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="136dp"
-        android:backgroundTint="#FF5722"
-        android:text="@string/update"
-        app:cornerRadius="18dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.51"
-        app:layout_constraintStart_toStartOf="parent"
-        app:strokeColor="#673AB7" />
-
-    <TextView
-        android:id="@+id/emailTextView"
-        android:layout_width="237dp"
-        android:layout_height="26dp"
-        android:text="Name"
-        android:textColor="#2196F3"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.545"
+        app:layout_constraintHorizontal_bias="0.511"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.645" />
+        app:layout_constraintVertical_bias="0.066" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/emailEditText"
@@ -54,36 +26,38 @@
         android:hint="Mario Rossi"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.543"
+        app:layout_constraintHorizontal_bias="0.56"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.698" />
+        app:layout_constraintVertical_bias="0.579" />
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/usernameEditText"
-        android:layout_width="238dp"
-        android:layout_height="42dp"
-        android:hint="mario_rossi_92"
+    <Button
+        android:id="@+id/FeedbackButtonUserDetails"
+        android:layout_width="225dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="80dp"
+        android:backgroundTint="@color/verde"
+        android:text="@string/my_feedbacks_en"
+        app:cornerRadius="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.543"
+        app:layout_constraintHorizontal_bias="0.516"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.586" />
+        app:strokeColor="#673AB7" />
 
-    <TextView
-        android:id="@+id/usernameTextView"
-        android:layout_width="237dp"
-        android:layout_height="26dp"
-        android:text="@string/username_text"
-        android:textColor="#2196F3"
-        android:textSize="20sp"
+    <Button
+        android:id="@+id/homeUserDetailsButton"
+        android:layout_width="225dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="216dp"
+        android:backgroundTint="#FF5722"
+        android:text="@string/update"
+        app:cornerRadius="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.544"
+        app:layout_constraintHorizontal_bias="0.526"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.536" />
+        app:strokeColor="#673AB7" />
 
     <TextView
         android:id="@+id/userNameTextView"
@@ -97,21 +71,63 @@
         app:autoSizeTextType="uniform"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.423" />
+        app:layout_constraintVertical_bias="0.301" />
 
-    <ImageView
-        android:id="@+id/userAvatarDetails"
-        android:layout_width="153dp"
-        android:layout_height="146dp"
-        android:contentDescription="user avatar"
-        android:src="@drawable/avatar"
+    <TextView
+        android:id="@+id/usernameTextView"
+        android:layout_width="237dp"
+        android:layout_height="26dp"
+        android:text="@string/username_text"
+        android:textColor="#2196F3"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.563"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.206" />
+        app:layout_constraintVertical_bias="0.419" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/usernameEditText"
+        android:layout_width="238dp"
+        android:layout_height="42dp"
+        android:hint="mario_rossi_92"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.56"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.467" />
+
+    <TextView
+        android:id="@+id/emailTextView"
+        android:layout_width="237dp"
+        android:layout_height="26dp"
+        android:text="Name"
+        android:textColor="#2196F3"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.563"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.529" />
+
+    <Button
+        android:id="@+id/UserDetailsArchive"
+        android:layout_width="225dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="148dp"
+        android:backgroundTint="#007aff"
+        android:text="@string/my_reservations_en"
+        app:cornerRadius="18dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.516"
+        app:layout_constraintStart_toStartOf="parent"
+        app:strokeColor="#673AB7" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

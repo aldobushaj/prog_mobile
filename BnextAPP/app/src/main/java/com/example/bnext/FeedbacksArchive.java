@@ -31,45 +31,37 @@ import com.google.gson.GsonBuilder;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
-import model.Reservation;
+import model.Feedback;
 import model.User;
-public class ArchiveActivity extends AppCompatActivity {
-    User currentUser;
-    ListView ReservationListView;
-    // ArrayList che contiene la lista di oggetti Feedback appartenenti ad una macchina (macchina passata da un altra activity)
-     ArrayList<Reservation> reservations = new ArrayList<>();
 
-
+public class FeedbacksArchive extends AppCompatActivity {
+    User currentUser = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.archive_activity);
-        ReservationListView = findViewById(R.id.ReservationsListView);
-        // Recupero il token ottenuto dalla pagina di login
+        setContentView(R.layout.activity_feedbacks_archive);
+
+        ListView FeedbacksListView = findViewById(R.id.ReservationsListView);
+        // ArrayList che contiene la lista di oggetti Feedback appartenenti ad una macchina (macchina passata da un altra activity)
+        Set<Feedback> feedbacksSet = new HashSet<>();
         Bundle bundle = getIntent().getExtras();
         //token = bundle.getString("token");
-        Log.d("Archive Activity",token);
+        Log.d("Feedbacks Activity",token);
         // Recupero lo user ottenuto dalla pagina di login
         try{
-        currentUser = (User) getIntent().getSerializableExtra("user");
+            currentUser = (User) getIntent().getSerializableExtra("user");
             if (currentUser == null)
                 throw new NullPointerException();
+            Log.d("Archive Activity","loaded activity user: " + currentUser.toString());
         } catch (Exception e) {
             Log.e("Archive Activity","Error parsing user ");
             e.printStackTrace();
         }
-        Log.d("Archive Activity","loaded activity user: " + currentUser.toString());
 
-
-        /*
-        *
-        * GET REQUEST PER PRENDERCI L'UTENTE AGGIORNATO
-        * */
-
-        //          "https://eo36hxzz25l7d4r.m.pipedream.net"
-        //          url+"/user/id={id}"
         AndroidNetworking.get(url+"user/id="+currentUser.getUserId().toString())
                 //negli header per il token fare sempre così .addHeaders("Authorization", "Bearer eyJhbGciOiJIUzUxMiJ9")
                 .addHeaders("Authorization", "Bearer " + token)
@@ -103,27 +95,25 @@ public class ArchiveActivity extends AppCompatActivity {
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
-                        reservations = (ArrayList<Reservation>) currentUser.getReservations();
-                        Log.println(Log.INFO, "Archive Activity", "Success getting user reservations" + reservations);
+                        feedbacksSet.addAll( currentUser.getFeedbacks());
+                        Log.println(Log.INFO, "Feedbacks Activity", "Success getting user feedbacks" + feedbacksSet.toString());
+                        ArrayList <Feedback> tempList = new ArrayList<>();
+                        tempList.addAll(feedbacksSet);
+                        Log.println(Log.INFO, "Feedbacks Activity", "Success getting user feedbacks" + tempList.toString());
 
-                        CustomReservationAdapter customViewAdapter = new CustomReservationAdapter(ArchiveActivity.this, reservations,currentUser);
+                        CustomFeedbacksAdapter customViewAdapter = new CustomFeedbacksAdapter(FeedbacksArchive.this, tempList,currentUser);
 
                         // set the CustomViewAdapter for ListView
-                        ReservationListView.setAdapter(customViewAdapter);
+                        FeedbacksListView.setAdapter(customViewAdapter);
                     }
                     @Override
                     public void onError(ANError error) {
                         // Qua cosa   fare se la richiesta va in errore
-                        Toast.makeText(ArchiveActivity.this, error.getErrorDetail(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(FeedbacksArchive.this, error.getErrorDetail(), Toast.LENGTH_LONG).show();
                         System.out.println(error);
-                        Log.println(Log.ERROR, "Archive Activity", error.getErrorDetail());
+                        Log.println(Log.ERROR, "Feedbacks Archive", error.getErrorDetail());
                     }
                 });
-
-
-
-
-
 
 
 
