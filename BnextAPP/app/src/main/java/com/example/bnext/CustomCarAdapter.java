@@ -63,7 +63,7 @@ public class CustomCarAdapter extends ArrayAdapter<Car> {
 
         // assegno il valore del commento alla seconda text view
         TextView textView2 = currentItemView.findViewById(R.id.textView2);
-        textView2.setText("Battery: " +currentCar.getBattery() + "\n" +currentCar.getPriceHour()+"$/h");
+        textView2.setText("Battery: " +currentCar.getBattery() + "\n" +currentCar.getPriceHour()+"€/h");
 
 
         // then according to the position of the view assign the desired image for the same
