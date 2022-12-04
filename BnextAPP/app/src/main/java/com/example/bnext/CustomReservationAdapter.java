@@ -69,7 +69,7 @@ public class CustomReservationAdapter extends ArrayAdapter<Reservation> {
         //textView1.setText("Start: " +currentReservation.getStartOfBook().toString() + "\n" +"End: "+currentReservation.getEndOfBook().toString());
         // assegno il valore del commento alla seconda text view
         TextView textView2 = currentItemView.findViewById(R.id.textView2);
-         textView2.setText("Start: " +currentReservation.getStartOfBook().toString() + "\n" +"End: "+currentReservation.getEndOfBook().toString());
+         textView2.setText("Start: " + currentReservation.getStartOfBook() + "\n" +"End: "+ currentReservation.getEndOfBook());
 
 
         // then according to the position of the view assign the desired image for the same

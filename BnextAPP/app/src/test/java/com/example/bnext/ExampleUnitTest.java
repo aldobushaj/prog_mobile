@@ -64,7 +64,7 @@ public class ExampleUnitTest {
         userTest.setSurname("TestSurname");
         assertEquals(userUUID.toString(), userTest.getUserId().toString());
         assertEquals("username", userTest.getUsername());
-        assertEquals("Thu Dec 31 00:00:00 CET 1998", userTest.getBirthDate().toString());
+        assertEquals("Thu Dec 31 00:00:00 CET 1998", userTest.getBirthDate());
         assertEquals("[]", userTest.getFeedbacks().toString());
         assertEquals("[]", userTest.getOwnedCars().toString());
         assertEquals("ADMIN", userTest.getRoles());
