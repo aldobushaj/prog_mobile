@@ -87,7 +87,7 @@ public class ReservationDetails extends AppCompatActivity {
         String DateToParseString = "";
         try {
             //Log.d("Reservation Details", String.valueOf(currentReservation.getStartOfBook().toInstant().getEpochSecond()));
-            DateToParseString = currentReservation.getStartOfBook().toString();
+            DateToParseString = currentReservation.getStartOfBook();
             //Wed Jul 27 15:00:00 GMT+02:00 2022
             String[] chunks = DateToParseString.split(" ");
             //Date parsedDate  = sdf.parse(chunks[0]+" "+chunks[1]+ " " + chunks[2] + " " + chunks[3] + " " + chunks[4]);
@@ -103,7 +103,7 @@ public class ReservationDetails extends AppCompatActivity {
           Log.d("Reservation Details","setted dates");
 
         } catch (Exception e) {
-            Log.e("Error parsing date",currentReservation.getStartOfBook().toString());
+            Log.e("Error parsing date", currentReservation.getStartOfBook());
             e.printStackTrace();
         }
         */

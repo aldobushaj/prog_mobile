@@ -427,6 +427,6 @@ public class BookActivity extends AppCompatActivity {
 
         // la data di fine prenotazione è successiva alla data di inizio prenotazione?
 
-        return endDate.compareTo(startDate) > 0 ? true : false;
+        return endDate.compareTo(startDate) > 0;
     }
 }
