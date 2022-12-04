@@ -7,6 +7,7 @@ import static com.example.bnext.MainActivity.url;
 
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -30,6 +31,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.UUID;
 
 import model.Car;
@@ -78,7 +80,11 @@ public class StatsCarActivity extends AppCompatActivity {
         priceKM.append(currentCar.getPriceKm().toString());
         priceHour.append(currentCar.getPriceHour().toString());
 
+        String src = currentCar.getName().toLowerCase()+"_"+currentCar.getCarModel().toLowerCase();
+        int drawableId = this.getResources().getIdentifier(src, "drawable", this.getPackageName());
+        carImage.setImageResource(drawableId);
 
+        //carImage.setImageURI(Uri.parse("lamborghini_hurricane"));
         carID = String.valueOf(currentCar.getCarId());
         //System.out.println(currentCar);
         userID= String.valueOf(currentUser.getUserId());

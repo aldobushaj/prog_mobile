@@ -13,6 +13,7 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -46,6 +47,7 @@ public class BookActivity extends AppCompatActivity {
     TextView nameOfCar, priceText, oreText, textReservation, startReservation, endReservation;
     EditText hourStart, dateStart, hourEnd, dateEnd;
     Button bookButton;
+    ImageView carImageReservation;
     final Calendar myCalendar= Calendar.getInstance();
     String myFormat="yyyy/MM/dd";
     Car currentCar;
@@ -73,8 +75,13 @@ public class BookActivity extends AppCompatActivity {
         dateEnd = findViewById(R.id.dateEndPayment);
         hourEnd = findViewById(R.id.hourEndPayment);
         bookButton = findViewById(R.id.bookButton);
-
+        carImageReservation = findViewById(R.id.carImageReservation);
         getSupportActionBar().setTitle("Reservation");
+
+
+        String src = currentCar.getName().toLowerCase()+"_"+currentCar.getCarModel().toLowerCase();
+        int drawableId = this.getResources().getIdentifier(src, "drawable", this.getPackageName());
+        carImageReservation.setImageResource(drawableId);
 
         AndroidNetworking.initialize(getApplicationContext());
 

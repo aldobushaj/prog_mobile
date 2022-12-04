@@ -50,6 +50,12 @@ public class CommentAdded extends AppCompatActivity {
         addFeedback = findViewById(R.id.addFeedback);
         home = findViewById(R.id.home);
 
+
+        // set image of car
+        String src = currentCar.getName().toLowerCase()+"_"+currentCar.getCarModel().toLowerCase();
+        int drawableId = this.getResources().getIdentifier(src, "drawable", this.getPackageName());
+        carImage.setImageResource(drawableId);
+
         // modify text
         carName.setText(currentCar.getName());
         carPlateNumber.setText("Plate number: "+currentCar.getPlateNumber());
