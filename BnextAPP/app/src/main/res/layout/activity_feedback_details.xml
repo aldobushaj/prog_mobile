@@ -65,7 +65,7 @@
         android:layout_height="74dp"
         android:layout_marginBottom="140dp"
         android:backgroundTint="@color/rosso_delete"
-        android:text="@string/delete"
+        android:text="@string/delete_feedback"
         app:cornerRadius="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

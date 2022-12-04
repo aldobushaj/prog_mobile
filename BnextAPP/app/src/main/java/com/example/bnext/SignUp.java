@@ -1,7 +1,9 @@
 package com.example.bnext;
 
+import static android.text.TextUtils.isEmpty;
 import static com.example.bnext.MainActivity.url;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,66 +19,116 @@ import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.androidnetworking.interfaces.StringRequestListener;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import model.User;
 
 public class SignUp extends AppCompatActivity {
 
-    TextView textSignUp, infoTextSignUp, emailText2, passwordText2;
-    EditText inputEmail2, inputPassword2;
-    Button buttonSignUp;
+    EditText name, surname, username, password;
+    Button buttonSignUp, alredyRegitered;
+    TextInputEditText birthdate;
 
+    User currentUser;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+
+        name = findViewById(R.id.name);
+        surname = findViewById(R.id.surname);
+        username = findViewById(R.id.username);
+        password = findViewById(R.id.password);
+        birthdate = findViewById(R.id.birthdate);
+        buttonSignUp = findViewById(R.id.buttonSignUp);
+        alredyRegitered = findViewById(R.id.alredyRegitered);
+
+        // Populate the UI with Fast Android Networking Library
         AndroidNetworking.initialize(getApplicationContext());
 
-        textSignUp = findViewById(R.id.textSignUp);
-        infoTextSignUp = findViewById(R.id.infoTextSignUp);
-        emailText2 = findViewById(R.id.emailText2);
-        passwordText2 = findViewById(R.id.passwordText2);
-        inputEmail2 = findViewById(R.id.inputEmail2);
-        inputPassword2 = findViewById(R.id.inputPassword2);
-        buttonSignUp = findViewById(R.id.buttonSignUp);
-
-
         buttonSignUp.setOnClickListener(view -> {
+            Toast.makeText(this, "messaggio di prova", Toast.LENGTH_SHORT);
+            /*if (isEmpty(name.getText())) {
+                Toast t = Toast.makeText(this, "You must enter first name to register!", Toast.LENGTH_SHORT);
+                t.show();
+            }
+            if (isEmpty(surname.getText())) {
+                Toast t = Toast.makeText(this, "You must enter surname to register!", Toast.LENGTH_SHORT);
+                t.show();
+            }
+            if (isEmpty(username.getText())) {
+                Toast t = Toast.makeText(this, "You must enter username to register!", Toast.LENGTH_SHORT);
+                t.show();
+            }
+            if (isEmpty(password.getText())) {
+                Toast t = Toast.makeText(this, "You must enter password to register!", Toast.LENGTH_SHORT);
+                t.show();
+            }
+            if (isEmpty(birthdate.getText())) {
+                Toast t = Toast.makeText(this, "You must enter birthdate to register!", Toast.LENGTH_SHORT);
+                t.show();
+            }*/
 
-            User user = new User(inputEmail2.getText().toString(), inputPassword2.getText().toString());
-            AndroidNetworking.post(url+"user/signup")
-                    //negli header per il token fare sempre così .addHeaders("Authorization", "Bearer eyJhbGciOiJIUzUxMiJ9")
-                    .addApplicationJsonBody(user)
-                    .setPriority(Priority.LOW)
-                    .build()
-                    .getAsString(new StringRequestListener() {
-                        @Override
-                        public void onResponse(String response) {
-                            Log.println(Log.INFO, "signUp result", "Registrazione effettuata con successo!");
+            if (name.length() != 0 && surname.length() != 0 && username.length() != 0
+                    && password.length() != 0 ) {
+                //Date date = (Date)birthdate.getText();
+                //DateFormat dateFormat = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy");
+                //String strDate = dateFormat.format(date);
+                //2020-12-31T10:00:00.000+00:00
+                User user = new User(name.getText().toString(), surname.getText().toString(),birthdate.getText().toString(), username.getText().toString(),
+                        password.getText().toString());
+                //User user = new User(inputEmail2.getText().toString(), inputPassword2.getText().toString());
+                AndroidNetworking.post(url+"user/signup")
+                        //negli header per il token fare sempre così .addHeaders("Authorization", "Bearer eyJhbGciOiJIUzUxMiJ9")
+                        .addApplicationJsonBody(user)
+                        .setPriority(Priority.LOW)
+                        .build()
+                        .getAsString(new StringRequestListener() {
+                            @Override
+                            public void onResponse(String response) {
+                                Log.println(Log.INFO, "signUp result", "Registrazione effettuata con successo!");
 
-                            Log.println(Log.INFO, "Request is: ", user.toString());
-                            //og.println(Log.INFO,"User: ", user.toString());
+                                Log.println(Log.INFO, "Request is: ", user.toString());
+                                //og.println(Log.INFO,"User: ", user.toString());
 
-                            // il login ha avuto successo, vado alla prossima pagina
-                            Intent intent = new Intent(view.getContext(), MainActivity.class);
-                            startActivity(intent);
-                        }
+                                // il login ha avuto successo, vado alla prossima pagina
+                                Intent intent = new Intent(view.getContext(), MainActivity.class);
+                                startActivity(intent);
+                            }
 
-                        @Override
-                        public void onError(ANError error) {
-                            // Qua cosa   fare se la richiesta va in errore
-                            Toast.makeText(view.getContext(), "Something went wrong with Sign Up", Toast.LENGTH_SHORT).show();
-                            System.out.println(error);
-                        }
+                            @Override
+                            public void onError(ANError error) {
+                                // Qua cosa   fare se la richiesta va in errore
+                                Toast.makeText(view.getContext(), "Something went wrong with Sign Up", Toast.LENGTH_SHORT).show();
+                                System.out.println(error);
+                            }
 
-                    });
+                        });
 
+            }else{
+                Toast.makeText(SignUp.this, "You must enter username and password to login", Toast.LENGTH_SHORT).show();
+                Log.println(Log.INFO, "signIn result", "You must enter username and password to login");
+            }
         });
+
+        alredyRegitered.setOnClickListener(view -> {
+            Intent intent = new Intent(view.getContext(), MainActivity.class);
+            intent.putExtra("currentUser",currentUser);
+            startActivity(intent);
+        });
+
+
+
     }
 }

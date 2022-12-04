@@ -5,6 +5,8 @@ package com.example.bnext;
 import static com.example.bnext.MainActivity.token;
 import static com.example.bnext.MainActivity.url;
 
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -50,6 +52,9 @@ public class BookRide extends AppCompatActivity {
     ListView AvailableCarsListView;
     ImageView userAvatar;
     User currentUser;
+    String myFormat="yyyy/MM/dd";
+    final Calendar myCalendar= Calendar.getInstance();
+
 
 
     @Override
@@ -83,11 +88,39 @@ public class BookRide extends AppCompatActivity {
         DateChooseEditText = findViewById(R.id.DateChooseEditText);
         TimeChooseEditText = findViewById(R.id.TimeChooseEditText);
 
+        // setta la data attuale come ricerca di default
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault());
         String currentDate = sdf.format(new Date());
         String[] parts = currentDate.split(" ");
         DateChooseEditText.setText(parts[0]);
         TimeChooseEditText.setText(parts[1]);
+
+
+
+        DatePickerDialog.OnDateSetListener datePicker = (view, year, month, day) -> {
+            myCalendar.set(Calendar.YEAR, year);
+            myCalendar.set(Calendar.MONTH,month);
+            myCalendar.set(Calendar.DAY_OF_MONTH,day);
+            updateLabelEndDate();
+        };
+
+        TimePickerDialog.OnTimeSetListener hourPicker = (view, hour, minute ) -> {
+            myCalendar.set(Calendar.HOUR_OF_DAY, hour);
+            myCalendar.set(Calendar.MINUTE,minute);
+            updateLabelEndTime();
+        };
+
+        TimeChooseEditText.setOnClickListener(view -> new TimePickerDialog(this, hourPicker,
+                myCalendar.get(Calendar.HOUR_OF_DAY),myCalendar.get(Calendar.MINUTE), true).show());
+
+
+        DateChooseEditText.setOnClickListener(view -> new DatePickerDialog(this, datePicker,
+                myCalendar.get(Calendar.YEAR),myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show());
+
+
+
+
+
 
         // List View
         AvailableCarsListView = findViewById(R.id.ReservationsListView);
@@ -220,10 +253,16 @@ public class BookRide extends AppCompatActivity {
 
 
 
-
-
     }
 
 
+    private void updateLabelEndDate(){
+        SimpleDateFormat dateFormat=new SimpleDateFormat(myFormat, Locale.US);
+        DateChooseEditText.setText(dateFormat.format(myCalendar.getTime()).replace("/","-"));
+    }
+    private void updateLabelEndTime()  {
+        SimpleDateFormat dateFormat=new SimpleDateFormat("HH:mm", Locale.US);
+        TimeChooseEditText.setText(dateFormat.format(myCalendar.getTime()));
+    }
 
 }

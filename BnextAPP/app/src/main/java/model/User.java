@@ -18,6 +18,15 @@ public class User implements Serializable {
     private String name;
     private String surname;
     private String birthDate;
+
+    public User(String name, String surname, String birthDate, String username, String password) {
+        this.name = name;
+        this.surname = surname;
+        this.birthDate = birthDate;
+        this.username = username;
+        this.password = password;
+    }
+
     private String username;
     private String password;
     private int active;

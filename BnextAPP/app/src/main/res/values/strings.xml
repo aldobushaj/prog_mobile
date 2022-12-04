@@ -54,5 +54,8 @@
     <string name="time_label">Time</string>
     <string name="date_label">Date</string>
     <string name="reservation_date">Reservation Date</string>
+    <string name="home_feedback">Home</string>
+    <string name="add_new_feedback">Add New Feedback</string>
+    <string name="delete_feedback">Delete Feedback</string>
 
 </resources>
