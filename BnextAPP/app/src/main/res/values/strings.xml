@@ -6,7 +6,7 @@
     <string name="destination_text_it">Destinazione</string>
     <string name="date_picker_text_it">Quando vuoi partire?</string>
     <string name="time_picker_text_it">A che ora?</string>
-    <string name="delete">DELETE</string>
+    <string name="delete">DELETE RESERVATION</string>
 
 
     <string name="date_picker_text_en">When do you want to travel?</string>
@@ -48,5 +48,11 @@
     <string name="start_booking_en">Start Booking</string>
 
     <string name="booking_duration">Booking duration</string>
+    <string name="add_feedback_button">ADD FEEDBACK</string>
+    <string name="home_button">HOME</string>
+    <string name="reservation_time">Reservation Time</string>
+    <string name="time_label">Time</string>
+    <string name="date_label">Date</string>
+    <string name="reservation_date">Reservation Date</string>
 
 </resources>

@@ -24,14 +24,19 @@ import android.widget.Toast;
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
+import com.androidnetworking.interfaces.JSONArrayRequestListener;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
+import model.Car;
 import model.Reservation;
 import model.User;
 public class ArchiveActivity extends AppCompatActivity {
@@ -39,7 +44,7 @@ public class ArchiveActivity extends AppCompatActivity {
     ListView ReservationListView;
     // ArrayList che contiene la lista di oggetti Feedback appartenenti ad una macchina (macchina passata da un altra activity)
      ArrayList<Reservation> reservations = new ArrayList<>();
-
+    Set <Car> allCars= new HashSet<>();
 
 
     @Override
@@ -61,6 +66,8 @@ public class ArchiveActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         Log.d("Archive Activity","loaded activity user: " + currentUser.toString());
+
+
 
 
         /*
@@ -105,7 +112,7 @@ public class ArchiveActivity extends AppCompatActivity {
                         }
                         reservations = (ArrayList<Reservation>) currentUser.getReservations();
                         Log.println(Log.INFO, "Archive Activity", "Success getting user reservations" + reservations);
-
+                        //updateReservationsWithCars(reservations);
                         CustomReservationAdapter customViewAdapter = new CustomReservationAdapter(ArchiveActivity.this, reservations,currentUser);
 
                         // set the CustomViewAdapter for ListView
@@ -127,5 +134,74 @@ public class ArchiveActivity extends AppCompatActivity {
 
 
 
+    }
+    //Set <Car> allCars= new HashSet<>();
+    public void updateReservationsWithCars(ArrayList<Reservation> reservations){
+       // Set <Car> allCars= new HashSet<>();
+
+
+        AndroidNetworking.get(url+"cars")
+                //negli header per il token fare sempre così .addHeaders("Authorization", "Bearer eyJhbGciOiJIUzUxMiJ9")
+                .addHeaders("Authorization", "Bearer " + token)
+                .addHeaders("accept", "*/*")
+                .addHeaders("accept-encoding", "gzip, deflate, br")
+                //.addPathParameter("id", currentUser.getUserId().toString())
+                //.addQueryParameter("limit", "10")
+                //.addHeaders("content-type","application/json")
+                //.setContentType("application/json; charset=utf-8")
+                //.addApplicationJsonBody(DateChooseEditText.getText())
+                //.addJSONObjectBody(jsonObject) // posting json
+                .setPriority(Priority.HIGH)
+                .build()
+
+                .getAsJSONArray(new JSONArrayRequestListener() {
+
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        Log.println(Log.INFO, "Archive Activity", "Getting all cars");
+                        Car currentCar= null;
+
+                        for (int i=0; i< response.length(); i++) {
+                            try {
+                                //token = (String) response.get("token");
+                                Gson gson  = new GsonBuilder()
+                                        .setDateFormat("yyyy-MM-dd'T'HH:mm:ss")
+                                        .create();
+                                currentCar = gson.fromJson(response.toString(), Car.class); // deserializes json into target2
+                                allCars.add(currentCar);
+                                //System.out.println("####################################\n"+currentUser.toString());
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+
+
+                        }
+
+                        Log.println(Log.INFO, "Archive Activity", "Success getting all cars" + allCars);
+                        for(Reservation currentRes : reservations){
+                            for (Car iterCar : allCars){
+
+                                if  (iterCar.getReservation().contains(currentRes)){
+                                    currentRes.setCar(iterCar);
+                                }
+
+                            }
+
+                        }
+
+
+                    }
+                    @Override
+                    public void onError(ANError error) {
+                        // Qua cosa   fare se la richiesta va in errore
+                        Toast.makeText(ArchiveActivity.this, error.getErrorDetail(), Toast.LENGTH_LONG).show();
+                        System.out.println(error);
+                        Log.println(Log.ERROR, "Archive Activity", error.getErrorDetail());
+                    }
+                });
+
+
+
+       // return reservations;
     }
 }

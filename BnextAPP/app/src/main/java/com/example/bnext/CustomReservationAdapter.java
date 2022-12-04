@@ -64,6 +64,7 @@ public class CustomReservationAdapter extends ArrayAdapter<Reservation> {
             Altrimenti Togliamo il nome della macchina e mettiamo solo Partenza
         * */
         TextView textView1 = currentItemView.findViewById(R.id.textView1);
+        //textView1.setText(currentReservation.getCar().getCarModel());
         //textView1.setText(currentReservation.getCar().getName() + " " +currentReservation.getCar().getCarModel());
         //textView1.setText("FIX: no car id in reservation tesla model X");
         //textView1.setText("Start: " +currentReservation.getStartOfBook().toString() + "\n" +"End: "+currentReservation.getEndOfBook().toString());

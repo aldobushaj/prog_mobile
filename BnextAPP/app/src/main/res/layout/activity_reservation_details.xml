@@ -16,24 +16,37 @@
     android:layout_height="match_parent">
 
     <Button
-        android:id="@+id/ReservationDetailsHomeButton"
+        android:id="@+id/AddFeedbackDetailsHomeButton"
         android:layout_width="315dp"
         android:layout_height="74dp"
-        android:layout_marginBottom="180dp"
-        android:backgroundTint="@color/arancione"
-        android:text="HOME"
+        android:layout_marginBottom="212dp"
+        android:backgroundTint="#2196F3"
+        android:text="@string/add_feedback_button"
+        android:visibility="invisible"
         app:cornerRadius="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:strokeColor="#2196F3" />
+
+    <Button
+        android:id="@+id/ReservationDetailsHomeButton"
+        android:layout_width="315dp"
+        android:layout_height="74dp"
+        android:layout_marginBottom="48dp"
+        android:backgroundTint="@color/arancione"
+        android:text="@string/home_button"
+        app:cornerRadius="18dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:strokeColor="#673AB7" />
 
     <TextView
-        android:id="@+id/ReservationDetailsDTimexTextView"
+        android:id="@+id/ReservationTimeTextView"
         android:layout_width="348dp"
         android:layout_height="38dp"
-        android:text="TextView"
+        android:text="@string/reservation_time"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -44,10 +57,10 @@
         app:layout_constraintVertical_bias="0.383" />
 
     <TextView
-        android:id="@+id/userNameTextView4"
+        android:id="@+id/ReservationTimeTextLabel"
         android:layout_width="163dp"
         android:layout_height="52dp"
-        android:text="Time"
+        android:text="@string/time_label"
         android:textAlignment="textStart"
         android:textColor="#232323"
         android:textSize="20sp"
@@ -61,10 +74,10 @@
         app:layout_constraintVertical_bias="0.275" />
 
     <TextView
-        android:id="@+id/userNameTextView3"
+        android:id="@+id/ReservationDateLabel"
         android:layout_width="163dp"
         android:layout_height="52dp"
-        android:text="Date"
+        android:text="@string/date_label"
         android:textAlignment="textStart"
         android:textColor="#232323"
         android:textSize="20sp"
@@ -91,10 +104,10 @@
         app:strokeColor="#673AB7" />
 
     <TextView
-        android:id="@+id/ReservationDetailsDateTextView"
+        android:id="@+id/ReservationDetailsCommentTextView"
         android:layout_width="348dp"
         android:layout_height="38dp"
-        android:text="TextView"
+        android:text="@string/reservation_date"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"

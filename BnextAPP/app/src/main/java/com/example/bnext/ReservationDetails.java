@@ -40,15 +40,12 @@ import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.StringRequestListener;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
-
+import model.Car;
 import model.Reservation;
 import model.User;
 public class ReservationDetails extends AppCompatActivity {
     TextView dateTextView, timeTextView;
-    Button deleteButton, homeButton;
+    Button deleteButton, homeButton,AddFeedbackDetailsHomeButton;
 
     // ArrayList che contiene la lista di oggetti Feedback appartenenti ad una macchina (macchina passata da un altra activity)
     Reservation currentReservation;
@@ -61,10 +58,11 @@ public class ReservationDetails extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reservation_details);
-        dateTextView = findViewById(R.id.ReservationDetailsDateTextView);
-        timeTextView =  findViewById(R.id.ReservationDetailsDTimexTextView);
+        dateTextView = findViewById(R.id.ReservationDetailsCommentTextView);
+        timeTextView =  findViewById(R.id.ReservationTimeTextView);
         deleteButton = findViewById(R.id.ReservationDetailsDeleteButton);
         homeButton = findViewById(R.id.ReservationDetailsHomeButton);
+        AddFeedbackDetailsHomeButton = findViewById(R.id.AddFeedbackDetailsHomeButton);
 
           // Recupero il token ottenuto dalla pagina di login
         Bundle bundle = getIntent().getExtras();

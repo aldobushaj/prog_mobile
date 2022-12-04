@@ -67,12 +67,13 @@ public class CustomFeedbacksAdapter extends ArrayAdapter<Feedback> {
             Altrimenti Togliamo il nome della macchina e mettiamo solo Partenza
         * */
         TextView textView1 = currentItemView.findViewById(R.id.textView1);
+        textView1.setText("ID: "+ currentFeedback.getIdFeedback().toString());
         //textView1.setText(currentFeedback.getCar().getName() + " " +currentFeedback.getCar().getCarModel());
         //textView1.setText("FIX: no car id in reservation tesla model X");
         //textView1.setText("Start: " +currentFeedback.getStartOfBook().toString() + "\n" +"End: "+currentFeedback.getEndOfBook().toString());
         // assegno il valore del commento alla seconda text view
         TextView textView2 = currentItemView.findViewById(R.id.textView2);
-        textView2.setText("Comment: " +currentFeedback.getComment().toString() + "\n" +"ID: "+currentFeedback.getIdFeedback().toString());
+        textView2.setText("Comment: " +currentFeedback.getComment().toString());
 
 
         // then according to the position of the view assign the desired image for the same
